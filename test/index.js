@@ -46,23 +46,25 @@ test('EightBitColor', t => {
 })
 
 test('Hex', t => {
-  t.plan(6)
+  t.plan(7)
   t.equal(Hex('#FF').value, 'FF', 'constructor, with #')
   t.equal(Hex('FF').value, 'FF', 'constructor, without #')
   t.equal(Hex('ff').value, 'FF', 'constructor, lowercase')
+  t.equal(Hex().value, null, 'constructor, no args')
   t.equal(Hex('#80').valueOf(), '80', 'valueOf')
   t.equal(util.inspect(Hex('#80')), '#80', 'inspect')
   t.equal(Hex('#80').toEightBit().valueOf(), 128, 'toEightBit')
 })
 
 test('HexColor', t => {
-  t.plan(10)
+  t.plan(11)
   t.equal(HexColor('#0080FF').G.valueOf(), '80', 'constructor')
   t.equal(HexColor('#80').value, '808080', 'constructor, two-length')
   t.equal(HexColor('#FC0').value, 'FFCC00', 'constructor, three-length')
   t.equal(HexColor('#0080FF').value, '0080FF', 'constructor, six-length')
   t.equal(HexColor('black').value, '000000', 'constructor, black')
   t.equal(HexColor('white').value, 'FFFFFF', 'constructor, white')
+  t.equal(HexColor().value, null, 'constructor, no args')
   t.equal(HexColor('#0080FF').valueOf(), '0080FF', 'valueOf, inherited')
   t.equal(util.inspect(HexColor('#0080FF')), '#0080FF', 'inspect, inherited')
   t.ok(
