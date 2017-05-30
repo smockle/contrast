@@ -1,3 +1,4 @@
+#!/usr/bin/env node --harmony_string_padding
 const { Contrast } = require('./lib/')
 
 const foreground = process.argv.slice(2)[0]
