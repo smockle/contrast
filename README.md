@@ -6,6 +6,8 @@
 
 # contrast
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/smockle/contrast.svg)](https://greenkeeper.io/)
+
 Analyse luminosity contrast ratio
 
 ## Installation
