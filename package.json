@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node --harmony_string_padding ./index.js",
-    "test": "node --harmony_string_padding test/index.js | colortape"
+    "test": "node --harmony_string_padding test/index.js | colortape",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
     "url": "https://github.com/smockle/contrast/issues"
   },
   "homepage": "https://github.com/smockle/contrast#readme",
-  "dependencies": {
+  "devDependencies": {
     "colortape": "^0.1.2",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
@@ -28,6 +29,15 @@
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.5.1",
     "prettier-eslint-cli": "^3.6.1"
-  }
+  },
+  "lint-staged": {
+    "*.js": [
+      "./node_modules/.bin/prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "dependencies": {}
 }
