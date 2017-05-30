@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '7'
+- '6'
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+before_install:
+- npm install -g npm@4
+after_script:
+- npm run coverage | coveralls
+env:
+  global:
+    secure: p7vBG0bM5h5f4Bi7Rh4QHrLqLx6fE5MH+I2jBVEwtI3wG3Qp/2/9YxPBzIyhER6fiZf488jiM/TUv3zwoQmfQqOOmYW5FfDVC6eHhD0vn7LbDfbOsSeJfQtfsU6eIWkE+sUw0ESQVEnW8U+Oh9WA72lVSaJumSGr+/0lqUeuUSgwWVUzWYw6KuLVh/8YYs6idmmN3EzkC+lMmsXPrhfLs2ITXVUmQoy23sVt/SuiFlQa7qycJ2dX17rJn2rlkNDjIbnT+U/N9To/DK6jDJMLZdnl+62LWP8Rgqtg2QsJWsz1o3KhZpP9eOEK/AhLUjWgk6W5AQRunSxen3g1TaivuTIxzMxuPX5AkkMZnK4WbKMlZ2Obqmwdb9eV5oUCHNxzWGUDQlTfNKHd3MuAd+0QcWHOcdV6W/AZ5tDvZ0nGb23KAZX2DVKVAfxUxBm8V/QNNw77adCB4feVKGlXn0lrW37dg+CIvuqVD0nnKAmAX0ECtrDrBW1dcyhZ0xgmlMlVWNtMACgLGsOVdOtVJs7Qd4rUkXy51ngsfZunBHDkufa27MDCViSj9eYckiSVJN7K40llkdqAqM3veahYyblX9U1y8QOQewQrjJBALAjZlNp0jP9m+8FngiIDnPdUULIBAKjCc0CU3i9LnFktkPrltAgAwWSi5nYtbcLOsBCyMS0=

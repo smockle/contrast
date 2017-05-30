@@ -1,3 +1,9 @@
+[![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
+[![Build Status](https://travis-ci.org/smockle/contrast.svg?branch=master)](https://travis-ci.org/smockle/contrast)
+[![Coverage Status](https://coveralls.io/repos/github/smockle/contrast/badge.svg?branch=master)](https://coveralls.io/github/smockle/contrast?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/smockle/contrast/badge.svg)](https://snyk.io/test/github/smockle/contrast)
+[![Greenkeeper badge](https://badges.greenkeeper.io/smockle/contrast.svg)](https://greenkeeper.io/)
+
 # contrast
 
 Analyse luminosity contrast ratio
