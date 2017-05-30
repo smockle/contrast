@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node --harmony_string_padding ./index.js",
     "test": "node --harmony_string_padding test/index.js | colortape",
-    "coverage": "nyc npm test &>/dev/null && nyc report --reporter=text-lcov",
+    "coverage": "nyc npm test &>/dev/null && nyc report",
+    "coveralls": "nyc npm test &>/dev/null && nyc report --reporter=text-lcov | coveralls",
     "precommit": "lint-staged"
   },
   "repository": {
