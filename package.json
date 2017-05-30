@@ -1,0 +1,25 @@
+{
+  "name": "contrast",
+  "version": "1.0.0",
+  "description": "Analyse luminosity contrast ratio",
+  "main": "index.js",
+  "bin": {
+    "contrast": "./index.js"
+  },
+  "scripts": {
+    "start": "node --harmony_string_padding ./index.js",
+    "test": "node --harmony_string_padding test/index.js | colortape"
+  },
+  "author": "Clay Miller <clay@smockle.com> (https://smockle.com)",
+  "license": "ISC",
+  "dependencies": {
+    "colortape": "^0.1.2",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "prettier-eslint-cli": "^3.6.1"
+  }
+}
