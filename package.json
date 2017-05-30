@@ -1,8 +1,8 @@
 {
-  "name": "contrast",
+  "name": "@smockle/contrast",
   "version": "1.0.0",
   "description": "Analyse luminosity contrast ratio",
-  "main": "index.js",
+  "main": "lib/index.js",
   "bin": {
     "contrast": "./index.js"
   },
@@ -10,8 +10,16 @@
     "start": "node --harmony_string_padding ./index.js",
     "test": "node --harmony_string_padding test/index.js | colortape"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smockle/contrast.git"
+  },
   "author": "Clay Miller <clay@smockle.com> (https://smockle.com)",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smockle/contrast/issues"
+  },
+  "homepage": "https://github.com/smockle/contrast#readme",
   "dependencies": {
     "colortape": "^0.1.2",
     "eslint": "^3.19.0",
