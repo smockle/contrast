@@ -1,12 +1,13 @@
 #!/usr/bin/env node --harmony_string_padding
 const { Contrast } = require('./lib/')
+const { version } = require('./package.json')
 
 const foreground = process.argv.slice(2)[0]
 const background = process.argv.slice(2)[1]
 
 if (!foreground || !background) {
   console.log(`contrast
-v${process.env.npm_package_version}
+v${version}
 Analyse luminosity contrast ratio
 
 Usage:
