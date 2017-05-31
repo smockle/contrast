@@ -87,17 +87,17 @@ test('Contrast', t => {
   )
   t.equal(
     Contrast('#0080FF', '#FFFFFF').value,
-    3.7607382189422496,
+    3.796322871580839,
     'constructor, value'
   )
   t.equal(
     Contrast('#0080FF', '#FFFFFF').valueOf(),
-    3.7607382189422496,
+    3.796322871580839,
     'valueOf'
   )
   t.equal(
     util.inspect(Contrast('#0080FF', '#FFFFFF')),
-    'Contrast(3.7607382189422496)',
+    '3.796322871580839:1',
     'inspect'
   )
 })

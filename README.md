@@ -49,3 +49,11 @@ Contrast('black', 'white')
 ## Testing
 
 `contrast` includes several unit tests. After cloning the `contrast` repo locally, run `npm install` in the project folder to install dependencies. Run `npm test` to execute the tests.
+
+## References
+
+- http://juicystudio.com/article/luminositycontrastratioalgorithm.php
+- https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+- https://www.w3.org/TR/WCAG20/#relativeluminancedef
+- https://www.w3.org/Graphics/Color/sRGB.html
+- https://stackoverflow.com/a/12894053/1923134
