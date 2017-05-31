@@ -10,6 +10,7 @@
     "start": "node --harmony_string_padding ./index.js",
     "test": "nyc node --harmony_string_padding test/index.js | colortape",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "prepublish": "npm test",
     "precommit": "lint-staged"
   },
   "repository": {

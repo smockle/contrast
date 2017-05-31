@@ -7,7 +7,7 @@ test('EightBit', t => {
   t.equal(EightBit(128).value, 128, 'constructor')
   t.equal(EightBit(128).valueOf(), 128, 'valueOf')
   t.equal(util.inspect(EightBit(128)), 'EightBit(128)', 'inspect')
-  t.equal(EightBit(128).linearize(), 0.2195197180748679, 'linearize')
+  t.equal(EightBit(128).linearize(), 0.21586050011389926, 'linearize')
   t.equal(util.inspect(EightBit(128).toHex()), '#80', 'toHex')
 })
 
@@ -35,7 +35,7 @@ test('EightBitColor', t => {
   )
   t.equal(
     EightBitColor(0, 128, 255).luminosity(),
-    0.2292005023671455,
+    0.22658342968146072,
     'luminosity'
   )
   t.equal(
