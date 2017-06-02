@@ -34,7 +34,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.13.4",
     "lint-staged": "^3.5.1",
-    "nyc": "^10.3.2",
+    "nyc": "^11.0.2",
     "prettier-eslint-cli": "^3.6.1"
   },
   "lint-staged": {
