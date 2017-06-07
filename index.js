@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony_string_padding
+#!/usr/bin/env node --harmony
 const { Contrast } = require('./lib/')
 const { version } = require('./package.json')
 
