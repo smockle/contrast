@@ -7,8 +7,8 @@
     "contrast": "./index.js"
   },
   "scripts": {
-    "start": "node --harmony_string_padding ./index.js",
-    "test": "nyc node --harmony_string_padding test/index.js | colortape",
+    "start": "node --harmony ./index.js",
+    "test": "nyc node --harmony test/index.js | colortape",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "prepublish": "npm test",
     "precommit": "lint-staged"
@@ -33,7 +33,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.13.4",
-    "lint-staged": "^3.5.1",
+    "lint-staged": "^3.6.0",
     "nyc": "^10.3.2",
     "prettier-eslint-cli": "^3.6.1"
   },
