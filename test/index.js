@@ -1,13 +1,17 @@
 const { EightBit, EightBitColor, Hex, HexColor, Contrast } = require('../lib/')
 const util = require('util')
 const test = require('tape')
+const THRESHOLD = 0.000001
 
 test('EightBit', t => {
   t.plan(5)
   t.equal(EightBit(128).value, 128, 'constructor')
   t.equal(EightBit(128).valueOf(), 128, 'valueOf')
   t.equal(util.inspect(EightBit(128)), 'EightBit(128)', 'inspect')
-  t.equal(EightBit(128).linearize(), 0.21586050011389926, 'linearize')
+  t.ok(
+    Math.abs(EightBit(128).linearize() - 0.21586050011389926) < THRESHOLD,
+    'linearize'
+  )
   t.equal(util.inspect(EightBit(128).toHex()), '#80', 'toHex')
 })
 
@@ -33,9 +37,9 @@ test('EightBitColor', t => {
     'rgb(0, 128, 255)',
     'inspect'
   )
-  t.equal(
-    EightBitColor(0, 128, 255).luminosity(),
-    0.22658342968146072,
+  t.ok(
+    Math.abs(EightBitColor(0, 128, 255).luminosity() - 0.22658342968146072) <
+      THRESHOLD,
     'luminosity'
   )
   t.equal(
@@ -85,14 +89,14 @@ test('Contrast', t => {
     '0080FF',
     'constructor'
   )
-  t.equal(
-    Contrast('#0080FF', '#FFFFFF').value,
-    3.796322871580839,
+  t.ok(
+    Math.abs(Contrast('#0080FF', '#FFFFFF').value - 3.796322871580839) <
+      THRESHOLD,
     'constructor, value'
   )
-  t.equal(
-    Contrast('#0080FF', '#FFFFFF').valueOf(),
-    3.796322871580839,
+  t.ok(
+    Math.abs(Contrast('#0080FF', '#FFFFFF').valueOf() - 3.796322871580839) <
+      THRESHOLD,
     'valueOf'
   )
   t.equal(
