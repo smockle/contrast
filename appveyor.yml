@@ -1,0 +1,21 @@
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+
+# scripts that run after cloning repository
+install:
+  # Install node 8
+  - ps: Install-Product node 8
+  # install modules
+  - npm install
+
+# to run your custom scripts instead of automatic tests
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+  # run tests
+  - npm test
+
+# Don't build with msbuild.
+build: off
