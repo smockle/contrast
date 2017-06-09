@@ -11,7 +11,6 @@
     "test": "node --harmony test/index.js | colortape",
     "coverage": "nyc --reporter=lcov node --harmony test/index.js | colortape",
     "postcoverage": "nyc report",
-    "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
     "prepublish": "npm test",
     "precommit": "lint-staged"
   },
@@ -26,7 +25,6 @@
   },
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
-    "codeclimate-test-reporter": "^0.5.0",
     "codecov": "^2.2.0",
     "colortape": "^0.1.2",
     "eslint": "^3.19.0",
