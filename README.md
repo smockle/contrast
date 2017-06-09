@@ -1,5 +1,6 @@
 [![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
 [![Build Status](https://travis-ci.org/smockle/contrast.svg?branch=master)](https://travis-ci.org/smockle/contrast)
+[![Build status](https://ci.appveyor.com/api/projects/status/8rh8n6s88emdy1q3?svg=true)](https://ci.appveyor.com/project/smockle/contrast)
 [![Code Climate](https://codeclimate.com/github/smockle/contrast/badges/gpa.svg)](https://codeclimate.com/github/smockle/contrast)
 [![Test Coverage](https://codeclimate.com/github/smockle/contrast/badges/coverage.svg)](https://codeclimate.com/github/smockle/contrast/coverage)
 [![Known Vulnerabilities](https://snyk.io/test/github/smockle/contrast/badge.svg)](https://snyk.io/test/github/smockle/contrast)
