@@ -1,13 +1,24 @@
-#!/usr/bin/env node --harmony
-const { Contrast } = require('./lib/')
-const { version } = require('./package.json')
+#!/usr/bin/env node --harmony -r @std/esm
+import { Contrast } from '../lib/index'
+import fs from 'fs'
+import path from 'path'
 
 const foreground = process.argv.slice(2)[0]
 const background = process.argv.slice(2)[1]
 
+function getVersion () {
+  const filename = path.resolve('./package.json')
+  const raw = fs.readFileSync(filename, 'utf8')
+  if (!raw) {
+    return
+  }
+  const packageInfo = JSON.parse(raw)
+  return packageInfo.version
+}
+
 if (!foreground || !background) {
   console.log(`contrast
-v${version}
+v${getVersion()}
 Analyse luminosity contrast ratio
 
 Usage:
