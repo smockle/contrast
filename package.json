@@ -4,7 +4,7 @@
   "description": "Analyse luminosity contrast ratio",
   "main": "lib/index",
   "bin": {
-    "contrast": "bin/index.mjs"
+    "contrast": "bin/index.js"
   },
   "scripts": {
     "start": "node --harmony -r @std/esm bin/index.mjs",
