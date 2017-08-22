@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node --harmony -r @std/esm bin/index.mjs",
     "test": "node --harmony -r @std/esm test/index.mjs | colortape",
-    "coverage": "nyc --reporter=lcov node --harmony -r @std/esm test/index.mjs | colortape",
+    "coverage": "nyc --require @std/esm --extension .mjs --reporter=lcov node --harmony test/index.mjs | colortape",
     "postcoverage": "nyc report",
     "prepublish": "npm test",
     "precommit": "lint-staged"
@@ -39,10 +39,10 @@
     "prettier-eslint-cli": "^4.0.4"
   },
   "lint-staged": {
-    "*.{js,mjs}": [
-      "./node_modules/.bin/prettier-eslint --write",
-      "git add"
-    ]
+    "*.{js,mjs}": ["./node_modules/.bin/prettier-eslint --write", "git add"]
+  },
+  "@std/esm": {
+    "cjs": true
   },
   "dependencies": {
     "@std/esm": "^0.5.1"
