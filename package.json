@@ -1,6 +1,6 @@
 {
   "name": "@smockle/contrast",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Analyse luminosity contrast ratio",
   "main": "lib/index",
   "bin": {
@@ -39,7 +39,10 @@
     "prettier-eslint-cli": "^4.0.4"
   },
   "lint-staged": {
-    "*.{js,mjs}": ["./node_modules/.bin/prettier-eslint --write", "git add"]
+    "*.{js,mjs}": [
+      "./node_modules/.bin/prettier-eslint --write",
+      "git add"
+    ]
   },
   "@std/esm": {
     "cjs": true
