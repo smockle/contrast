@@ -1,0 +1,8 @@
+{
+  // Enables prettier for languages.
+  "prettier.javascriptEnable": ["javascript", "javascriptreact"],
+  "prettier.typescriptEnable": ["typescript", "typescriptreact"],
+  "prettier.cssEnable": ["css", "less", "scss"],
+  "prettier.jsonEnable": ["json"],
+  "prettier.graphqlEnable": ["graphql"]
+}
