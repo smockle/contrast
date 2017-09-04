@@ -1,6 +1,5 @@
-node_modules
 coverage
 .esm-cache
 .nyc_output
+.vscode
 *.log
-.DS_Store
