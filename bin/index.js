@@ -1,3 +1,3 @@
 #!/usr/bin/env node --harmony
-require('@std/esm')
+require = require('@std/esm')(module)
 require('./index.mjs')
