@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ -z $(node --v8-options | grep harmony_string_padding) ]]; then
+    npm run debug:latest
+else
+    npm run debug:6
+fi

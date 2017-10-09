@@ -8,9 +8,15 @@
     "contrast": "bin/index.js"
   },
   "scripts": {
-    "start": "node --harmony -r @std/esm bin/index.mjs",
-    "debug": "node --harmony --nolazy --inspect-brk=5858 -r @std/esm bin/index.mjs",
-    "test": "node --harmony -r @std/esm test/index.mjs | colortape",
+    "start": "scripty",
+    "start:latest": "node -r @std/esm bin/index.mjs",
+    "start:6": "node --harmony_string_padding -r @std/esm bin/index.mjs",
+    "debug": "scripty",
+    "debug:latest": "node --nolazy --inspect-brk=5858 -r @std/esm bin/index.mjs",
+    "debug:6": "node --harmony_string_padding --nolazy --inspect-brk=5858 -r @std/esm bin/index.mjs",
+    "test": "scripty",
+    "test:latest": "node -r @std/esm test/index.mjs | colortape",
+    "test:6": "node --harmony_string_padding -r @std/esm test/index.mjs | colortape",
     "coverage": "nyc --require @std/esm --extension .mjs --reporter=lcov node --harmony test/index.mjs | colortape",
     "postcoverage": "nyc report",
     "prepublishOnly": "npm test",
@@ -38,7 +44,8 @@
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
     "nyc": "^11.0.2",
-    "prettier-eslint-cli": "^4.3.0"
+    "prettier-eslint-cli": "^4.3.0",
+    "scripty": "^1.7.2"
   },
   "lint-staged": {
     "*.{js,mjs}": [
