@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony
+#!/usr/bin/env node
 import { Contrast } from '../lib/index'
 import fs from 'fs'
 import path from 'path'
