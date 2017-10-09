@@ -1,6 +1,6 @@
 {
   "name": "@smockle/contrast",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Analyse luminosity contrast ratio",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
