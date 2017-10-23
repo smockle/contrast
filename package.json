@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
-    "codecov": "^2.2.0",
+    "codecov": "^3.0.0",
     "colortape": "^0.1.2",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
