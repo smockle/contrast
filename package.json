@@ -30,7 +30,7 @@
     "codecov": "^3.0.0",
     "colortape": "^0.1.2",
     "eslint": "^4.5.0",
-    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.5.0",
