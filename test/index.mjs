@@ -1,5 +1,5 @@
-import './eightbit'
-import './eightbitcolor'
-import './hex'
-import './hexcolor'
-import './contrast'
+import "./eightbit";
+import "./eightbitcolor";
+import "./hex";
+import "./hexcolor";
+import "./contrast";

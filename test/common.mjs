@@ -1,2 +1,2 @@
-const THRESHOLD = 0.000001
-export default THRESHOLD
+const THRESHOLD = 0.000001;
+export default THRESHOLD;

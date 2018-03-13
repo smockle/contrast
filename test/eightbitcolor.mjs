@@ -1,39 +1,39 @@
-import EightBit from '../lib/eightbit'
-import EightBitColor from '../lib/eightbitcolor'
-import THRESHOLD from './common'
-import test from 'tape'
-import util from 'util'
+import EightBit from "../lib/eightbit";
+import EightBitColor from "../lib/eightbitcolor";
+import THRESHOLD from "./common";
+import test from "tape";
+import util from "util";
 
-test('EightBitColor', t => {
-  t.plan(6)
+test("EightBitColor", t => {
+  t.plan(6);
   t.equal(
     EightBitColor(0, 128, 255).G.valueOf(),
     128,
-    'constructor, with Number'
-  )
+    "constructor, with Number"
+  );
   t.equal(
     EightBitColor(EightBit(0), EightBit(128), EightBit(255)).G.valueOf(),
     128,
-    'constructor, with EightBit'
-  )
+    "constructor, with EightBit"
+  );
   t.deepEqual(
     EightBitColor(0, 128, 255).valueOf(),
     { R: 0, G: 128, B: 255 },
-    'valueOf'
-  )
+    "valueOf"
+  );
   t.equal(
     util.inspect(EightBitColor(0, 128, 255)),
-    'rgb(0, 128, 255)',
-    'inspect'
-  )
+    "rgb(0, 128, 255)",
+    "inspect"
+  );
   t.ok(
     Math.abs(EightBitColor(0, 128, 255).luminosity() - 0.22658342968146072) <
       THRESHOLD,
-    'luminosity'
-  )
+    "luminosity"
+  );
   t.equal(
     util.inspect(EightBitColor(0, 128, 255).toHexColor()),
-    '#0080FF',
-    'toHexColor'
-  )
-})
+    "#0080FF",
+    "toHexColor"
+  );
+});
