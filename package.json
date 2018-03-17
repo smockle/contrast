@@ -24,7 +24,7 @@
     "url": "git+https://github.com/smockle/contrast.git"
   },
   "author": "Clay Miller <clay@smockle.com> (https://smockle.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/smockle/contrast/issues"
   },
