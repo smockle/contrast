@@ -14,6 +14,29 @@ after_script:
 - greenkeeper-lockfile-upload
 - npm run coverage
 - codecov
+after_success:
+- if [ "$TRAVIS_BRANCH" == "master" ]; then
+    git config --global user.email "builds@travis-ci.com"
+    git config --global user.name "Travis CI"
+    npm --no-git-tag-version version patch
+    export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d")-$TRAVIS_BUILD_NUMBER
+    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
+    git push --quiet https://$GITHUB_ACCESS_TOKEN@github.com/smockle/contrast $GIT_TAG > /dev/null 2>&1
+  fi
+branches:
+  except:
+  - "/^build-[0-9a-z\\-]*/"
 env:
   global:
   - secure: AN+0IYcfJWIT7nmvLfa5ZDrNEWHNWbRMsqo4CQ+zDnpkcJLqdKjVbQYyZ7fgxD0EiqG8PYVc4qizeNlASBI8SrCkMMf6yszVvwTvbmqOLzwbrC6fE6A7E4h5QVYOYu30ThwiTKTAfN09+kF8D0c8daVJJcf3Junf7AdsqqzMU3Mur65OBMxVDHd0D01GvqBiddU4NRduQxeJ3soxr2ad1jZIKc+gMPQNZY5bThsY2ygawUV4IYv0+VOnHZpzTY4aIvSeLJqAz/xNHieptsEz0qLOJ7nQeDZjW3KH//wPbjDsEmNiREQBLUylcj1t6P69st7+CJg1Z/prwcrY5rleLxjVlScgCIflFyLkYG2bjpAF/YUCL/9RRqzAGk3SIyngM7/0YYchduBqNwJm/xe5kbsnqstHu4ZC4IDXU5fc1N9EWc9kVNh1GxqbBotrlb48twvB9PFC5pcoMPoVEN3t5oncRKwZ6PW9DODez9OGbgelO7kXcnjMLweB2gEEfgNinnz/aAzu7r7e6qJ/ViiUPK9yffNY2uS7hVPHb3XlbPYXnTgcBu34riCNSRgvH61JpHLkCHxrNnzFEHHpHNSjk92p8QUdjrtQ8Ew779dcz7zlBCSuBrO/HLQKp3nB3Kh/uvNV723KPzpf857gwqFt8EsWFMaSJtwdf9+G2iIGdbk=
+  - secure: BFN54l2GhDQQKSGQyvcEgQVinzs2uN4+FcZVjtZlwhJgBiAbDQvbqwSE0awffjfQXeR5pZCAnsCgNJuvhXqUEUZmr98kExgQ7SdibqvY3knPbhzp7sBYTlCaTdpWNRr/tstVUAGdCD+nEvDtKdQTpdEeIbVekuASkFTE8ertOqkqfcUDMlHh4bPKCPJ7/iUXakvGdSeynyjdouDxJPW6+Bcr0fJRCHb4eNOFj/7rTmbmUVd4l7Vk3zV2gE3jiLN/pOb2e1AnjyacJklovNQ1T4glmwOVJOTacMi/XsMljmzV1MyAXfv6ClwvMQhe3qEStEnsHz9UZ4JmC6gYyoXE9CWY6vQR77HTyANfjcrR74JsQTYJGs1pLzYDBLfl1azDnvTMzEt15g2Ire+nQeY7lyy0fdDSfbPb0nX3E5fO1TO7fR2Z/8izoaCZ0sgitb+GjSNwvLi6i9c9uhTRHEra6VLf/fAqJEC/EDjgcHnEzxYmdyKvYbFLXBxpGIRXQQ0hEaVWglmTTX1CevfhjW3khXQ5o7dk41YkfDPyHTA+GmEOLZCIydRaDXdsj3ftSe0E0aZS8fjO5lanKlZcpR3CsDcwy+sXTwirmi83VCaQVBbHAAaacmmIDymXlpEgHRBUYvGPQfkJn+yTiYxFNVVszxa1khU+YtSzMeDIR0kIzlo=
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: clay@smockle.com
+  api_key:
+    secure: OuUToZm1if+bbSvpSlbq6cSd6MsWOpRlHe9ZHq7XfG3J1VpeR4Vd1EtOop9DpNE+EOvjeUvobFs48+pPdQv6hs9yomXH5477Dlyvw56QJt6ACZsCqM45AFWWDLJuyaqRg/YRYaGgT7e+8vhq2bxKZfUaIY2Zm58TanPoS3s5o1zAXt2VNInM7GMH99taZMeqiCG/jJGZAxr/f7/EXWaAHx5B+e/Uchlq3pL+T1lanucr8D10WwOvkOWS9/QcBaFr0dfg2VrcEOGE9/eSYnRtX67RqofEJHERTQHjHwJebmEr4sUfTgx9L5fg5cbyrJ4peuGeMS69T6WmYhv5K59ixm/1CEWQPyhmB1bqOtFnLuYi/b9j0UGoztOVqbXJSez6SBWV4nUNnXbE7SmWdO/7LSu+238zGASuYtGzes17KPkyeWEOiX6D96thSkz0gamuaMXmp4C6gUKn7gcYBrpHuDSnL6VOtMe5l05J9awVuSvyfrRw6l82E6X1Y/Q0m2ble4y1yyZfxNp/mgVi8t1hYvdHhjoroW1jx85IfaTuLMQuoal78IyYT/BUcKygypHDN+xvhpz5F+XZqDPCN77/OzVvusgODVG/sC7nUTPmEGnXkK0bcA+x5cGIRCJi2AlvK4MgiLYsjWMXaRhXb0eKmGaaAq4W54ITHUYLXJ9nSvo=
+  on:
+    tags: false
+    branch: master
+    repo: smockle/contrast
