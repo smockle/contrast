@@ -2,15 +2,16 @@
   "name": "@smockle/contrast",
   "version": "4.0.7",
   "description": "Analyse luminosity contrast ratio",
+  "files": [
+    "dist"
+  ],
   "main": "dist/lib/index",
   "types": "dist/lib/index.d.ts",
   "bin": {
     "contrast": "dist/bin/index.js"
   },
   "scripts": {
-    "build": "npm run build:mjs && npm run build:js",
-    "build:js": "echo \"Not building .js files\" && exit 0",
-    "build:mjs": "tsc -d && bash scripts/rename.sh",
+    "build": "bash scripts/build.sh",
     "start": "node -r @std/esm dist/bin/index.mjs",
     "debug": "node --nolazy --inspect-brk=5858 -r @std/esm dist/bin/index.mjs",
     "test": "node -r @std/esm test/index.mjs | colortape",
@@ -33,21 +34,15 @@
     "@types/node": "^9.4.7",
     "codecov": "^3.0.0",
     "colortape": "^0.1.2",
-    "eslint": "^4.5.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "nyc": "^11.0.2",
-    "prettier-eslint-cli": "^4.3.0",
+    "prettier": "^1.11.1",
     "typescript": "^2.8.0-rc"
   },
   "lint-staged": {
     "*.{js,mjs,ts}": [
-      "./node_modules/.bin/prettier-eslint --write",
+      "./node_modules/.bin/prettier --write",
       "git add"
     ]
   },

@@ -13,7 +13,7 @@ export interface EightBit {
   toHex(this: EightBit): Hex;
 }
 
-export function EightBit(value: number | null): EightBit {
+export function EightBit(value: EightBit | number | null): EightBit {
   const eightbit: EightBit = Object.create(EightBit.prototype);
   eightbit.value = Number(value);
   return eightbit;

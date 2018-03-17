@@ -14,7 +14,7 @@ export type HexColor = Omit<Hex, "toEightBit"> & {
   toEightBitColor(this: HexColor): EightBitColor;
 };
 
-export function HexColor(value: string | null): HexColor {
+export function HexColor(value?: string | null): HexColor {
   const hexcolor: HexColor = Object.create(HexColor.prototype);
   hexcolor.value = (() => {
     if (!value) {

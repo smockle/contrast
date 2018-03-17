@@ -19,9 +19,9 @@ export interface EightBitColor {
 }
 
 export function EightBitColor(
-  R: number | null,
-  G: number | null,
-  B: number | null
+  R: EightBit | number | null,
+  G: EightBit | number | null,
+  B: EightBit | number | null
 ): EightBitColor {
   const eightbitcolor: EightBitColor = Object.create(EightBitColor.prototype);
   eightbitcolor.R = EightBit(R);

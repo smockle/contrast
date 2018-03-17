@@ -1,5 +1,6 @@
 // @ts-check
-import { EightBit, EightBitColor } from "../dist/lib.mjs";
+import { EightBit, EightBitColor } from "../dist/lib/index.mjs";
+// @ts-ignore
 import { THRESHOLD } from "./common.mjs";
 import test from "tape";
 import util from "util";
