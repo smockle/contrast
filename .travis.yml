@@ -14,31 +14,24 @@ after_script:
 - greenkeeper-lockfile-upload
 - npm run coverage
 - codecov
-after_success:
-- if [ "$TRAVIS_BRANCH" == "master" ]; then
-    git config --global user.email "builds@travis-ci.com";
-    git config --global user.name "Travis CI";
-    npm --no-git-tag-version version patch;
-    git add package.json package-lock.json;
-    git commit -m "Updated version number";
-    export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d")-$TRAVIS_BUILD_NUMBER;
-    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER";
-    git push --quiet https://$GITHUB_ACCESS_TOKEN@github.com/smockle/contrast $GIT_TAG > /dev/null 2>&1;
-  fi
-branches:
-  except:
-  - "/^build-[0-9a-z\\-]*/"
 env:
   global:
   - secure: AN+0IYcfJWIT7nmvLfa5ZDrNEWHNWbRMsqo4CQ+zDnpkcJLqdKjVbQYyZ7fgxD0EiqG8PYVc4qizeNlASBI8SrCkMMf6yszVvwTvbmqOLzwbrC6fE6A7E4h5QVYOYu30ThwiTKTAfN09+kF8D0c8daVJJcf3Junf7AdsqqzMU3Mur65OBMxVDHd0D01GvqBiddU4NRduQxeJ3soxr2ad1jZIKc+gMPQNZY5bThsY2ygawUV4IYv0+VOnHZpzTY4aIvSeLJqAz/xNHieptsEz0qLOJ7nQeDZjW3KH//wPbjDsEmNiREQBLUylcj1t6P69st7+CJg1Z/prwcrY5rleLxjVlScgCIflFyLkYG2bjpAF/YUCL/9RRqzAGk3SIyngM7/0YYchduBqNwJm/xe5kbsnqstHu4ZC4IDXU5fc1N9EWc9kVNh1GxqbBotrlb48twvB9PFC5pcoMPoVEN3t5oncRKwZ6PW9DODez9OGbgelO7kXcnjMLweB2gEEfgNinnz/aAzu7r7e6qJ/ViiUPK9yffNY2uS7hVPHb3XlbPYXnTgcBu34riCNSRgvH61JpHLkCHxrNnzFEHHpHNSjk92p8QUdjrtQ8Ew779dcz7zlBCSuBrO/HLQKp3nB3Kh/uvNV723KPzpf857gwqFt8EsWFMaSJtwdf9+G2iIGdbk=
-  - secure: BFN54l2GhDQQKSGQyvcEgQVinzs2uN4+FcZVjtZlwhJgBiAbDQvbqwSE0awffjfQXeR5pZCAnsCgNJuvhXqUEUZmr98kExgQ7SdibqvY3knPbhzp7sBYTlCaTdpWNRr/tstVUAGdCD+nEvDtKdQTpdEeIbVekuASkFTE8ertOqkqfcUDMlHh4bPKCPJ7/iUXakvGdSeynyjdouDxJPW6+Bcr0fJRCHb4eNOFj/7rTmbmUVd4l7Vk3zV2gE3jiLN/pOb2e1AnjyacJklovNQ1T4glmwOVJOTacMi/XsMljmzV1MyAXfv6ClwvMQhe3qEStEnsHz9UZ4JmC6gYyoXE9CWY6vQR77HTyANfjcrR74JsQTYJGs1pLzYDBLfl1azDnvTMzEt15g2Ire+nQeY7lyy0fdDSfbPb0nX3E5fO1TO7fR2Z/8izoaCZ0sgitb+GjSNwvLi6i9c9uhTRHEra6VLf/fAqJEC/EDjgcHnEzxYmdyKvYbFLXBxpGIRXQQ0hEaVWglmTTX1CevfhjW3khXQ5o7dk41YkfDPyHTA+GmEOLZCIydRaDXdsj3ftSe0E0aZS8fjO5lanKlZcpR3CsDcwy+sXTwirmi83VCaQVBbHAAaacmmIDymXlpEgHRBUYvGPQfkJn+yTiYxFNVVszxa1khU+YtSzMeDIR0kIzlo=
+  - secure: Da097y0Z9noNqOoEvZBHN07P1pNpxeJyjaFsOk4aWMrUgEPsdMIF+KZnOO3zBkT5Lo5/bVk0UMXqDl+ZOFBGBZE/VXXo4U8vz85ithEHzQ1Tw2uubqn57efcbAIxyoobUKPCg9DhCDmqpgQhvwpzZyH+zEWgLo6indc8027Qxs5sWfdtnsEA50xr9axKZTJN3s+lfEqEotGoorf5YndkndQpo3YOAzMQhwwlzBx6GyJ3LZmNxywH5fqfYWhpmkqYkZknQRmbDmCDtEIXT3VkzNvUIvkcBONc8jTUhYc73G2JzZ856gqhWG09rRJ8mKW3tU+4sfZXmFTIFBj7mrpzL9zq4TJjWY4MRpciAZ7PRTjduy4OLsjJofdDtthqGmkfgIyK+aL7qp3GmlOV5RR5w7hZKDP21FrABszY7ihNkJPwEt2pCp7DathoiuXofGAhjFPU5k3uTPb2PUP7jK0PDVWJ+kVrQsZC7O+mHGWV4/I9wYfougx52D9o0AfbGRs5cdkMWXWmDIpHV9SoRhs6MVJNf05SLPmQ1Ac+gWR/t+pzcBc/ynZsUikztP9KHdtDkW+QUoSt1e+8gX8Fdqd9k+en595D5F4BKOOuGROkz8e3wN2sQIDq2blczEHniZRTd8pq281N2qljofD5pW36E1X/U6YWkYtVPfi/7D8MT+E=
 deploy:
-  skip_cleanup: true
-  provider: npm
-  email: bot@smockle.com
-  api_key:
-    secure: TSsF278thyKM4oo6aB8bLukHcc5KEvTIlxKvlkDCFpaN42zUX3+6mUva3GuwAXl7JZ5QQM0tcmS2QjMVFbZQjtg7xbrp/1KApo+aNjQuFtcMyzFq3as5wYsVU/5WgqpONiFRc3p6EphBGz2lc7W1K743cXdmIynujc0zrSNO1JbG5+QfrF5k1NZqkPNkZrneEmNAJMhkIb61pHVRDCJubcpC75Zskv6GzgG0apHsci1awQCwc/H9pf50c9N1tg3O54GKmYGZp+T4naUB6waCQlLhudbSkmXU7Zd6oL0H3mPm1J1SDaWIAqOOAg1N4xcIeGSsxRnpHZKWUeIlVCNrVQkd6sbTQIEI2McH0waekvFQeagpJeGyUqFvXUXwLmIimhaJVOOXwN6uEQVs1kH0AGqwVPtO2OhaXgv/E7Aa5/i4qic+C9k7wtXbDlCZkyTK9cGm3KmOovXxX5xOwd8eZ9uSFBg5qJfX/1AJqzUeySutDG3te9kxYSZa10mfnaZ5D+tmcvYdtP4wt9ncrq9AhHbRNG17ISjBtBeS5bWcI3TxJmmZFtHaRqmcNJQNyg9dF62CBhrpsz5uXIZ6jJ6lZBl0Sfz3MzFWSnEz+aKETI/lxy/HUC7+tiQnoYktnuJcWz8ZW0T7wFLcrRO3fYnQrh6qpZ7APD7s+hcnNiuK0bM=
-  on:
-    tags: false
-    branch: master
-    repo: smockle/contrast
+  - provider: script
+    skip_cleanup: true
+    script: scripts/deploy.sh
+    on:
+      branch: master
+      repo: smockle/contrast
+      tags: false
+  - provider: npm
+    skip_cleanup: true
+    email: bot@smockle.com
+    api_key:
+      secure: TSsF278thyKM4oo6aB8bLukHcc5KEvTIlxKvlkDCFpaN42zUX3+6mUva3GuwAXl7JZ5QQM0tcmS2QjMVFbZQjtg7xbrp/1KApo+aNjQuFtcMyzFq3as5wYsVU/5WgqpONiFRc3p6EphBGz2lc7W1K743cXdmIynujc0zrSNO1JbG5+QfrF5k1NZqkPNkZrneEmNAJMhkIb61pHVRDCJubcpC75Zskv6GzgG0apHsci1awQCwc/H9pf50c9N1tg3O54GKmYGZp+T4naUB6waCQlLhudbSkmXU7Zd6oL0H3mPm1J1SDaWIAqOOAg1N4xcIeGSsxRnpHZKWUeIlVCNrVQkd6sbTQIEI2McH0waekvFQeagpJeGyUqFvXUXwLmIimhaJVOOXwN6uEQVs1kH0AGqwVPtO2OhaXgv/E7Aa5/i4qic+C9k7wtXbDlCZkyTK9cGm3KmOovXxX5xOwd8eZ9uSFBg5qJfX/1AJqzUeySutDG3te9kxYSZa10mfnaZ5D+tmcvYdtP4wt9ncrq9AhHbRNG17ISjBtBeS5bWcI3TxJmmZFtHaRqmcNJQNyg9dF62CBhrpsz5uXIZ6jJ6lZBl0Sfz3MzFWSnEz+aKETI/lxy/HUC7+tiQnoYktnuJcWz8ZW0T7wFLcrRO3fYnQrh6qpZ7APD7s+hcnNiuK0bM=
+    on:
+      branch: master
+      repo: smockle/contrast
+      tags: false
