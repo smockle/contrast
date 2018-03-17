@@ -3,7 +3,7 @@
   "version": "4.0.7",
   "description": "Analyse luminosity contrast ratio",
   "main": "dist/lib/index",
-  "types": "dist/lib/index.mjs.d.ts",
+  "types": "dist/lib/index.d.ts",
   "bin": {
     "contrast": "dist/bin/index.js"
   },
@@ -42,11 +42,11 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
     "nyc": "^11.0.2",
-    "typescript": "^2.8.0-dev.20180314",
-    "prettier-eslint-cli": "^4.3.0"
+    "prettier-eslint-cli": "^4.3.0",
+    "typescript": "^2.8.0-rc"
   },
   "lint-staged": {
-    "*.{js,mjs}": [
+    "*.{js,mjs,ts}": [
       "./node_modules/.bin/prettier-eslint --write",
       "git add"
     ]
