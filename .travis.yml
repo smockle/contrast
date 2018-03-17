@@ -21,7 +21,7 @@ env:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: scripts/deploy.sh
+    script: npm run _version
     on:
       branch: master
       repo: smockle/contrast

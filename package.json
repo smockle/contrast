@@ -19,6 +19,7 @@
     "coverage": "nyc --require @std/esm --extension .mjs --reporter=lcov node test/index.mjs | colortape",
     "postcoverage": "nyc report",
     "prepublishOnly": "npm test",
+    "_version": "bash scripts/version.sh",
     "precommit": "lint-staged"
   },
   "repository": {
