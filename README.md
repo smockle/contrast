@@ -16,6 +16,7 @@ Run `npm install --save @smockle/contrast` to add `contrast` to your project.
 ## Usage
 
 ### Shell
+
 ```Bash
 # Hexadecimal colors
 $ contrast "#000000" "#FFFFFF"
@@ -30,7 +31,8 @@ $ contrast "#000" "#F8"
 $ contrast black white
 ```
 
-### JavaScript
+### JavaScript & TypeScript
+
 ```JavaScript
 const { Contrast } = require('@smockle/contrast')
 
@@ -53,8 +55,8 @@ Contrast('black', 'white')
 
 ## References
 
-- http://juicystudio.com/article/luminositycontrastratioalgorithm.php
-- https://www.w3.org/TR/WCAG20/#contrast-ratiodef
-- https://www.w3.org/TR/WCAG20/#relativeluminancedef
-- https://www.w3.org/Graphics/Color/sRGB.html
-- https://stackoverflow.com/a/12894053/1923134
+* http://juicystudio.com/article/luminositycontrastratioalgorithm.php
+* https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+* https://www.w3.org/TR/WCAG20/#relativeluminancedef
+* https://www.w3.org/Graphics/Color/sRGB.html
+* https://stackoverflow.com/a/12894053/1923134
