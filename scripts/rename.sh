@@ -13,8 +13,5 @@ find dist -name "*.js.js" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s
 # Recursively rename '.mjs.ts' files in the 'dist' folder to '.mjs'.
 find dist -name "*.mjs.js" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.mjs\.js/\.mjs/g")' '{}' \;
 
-# Recursively rename '.mjs.d.ts' files
-find dist -name "*.mjs.d.ts" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.mjs\.d\.ts/\.d\.ts/g")' '{}' \;
-
-# Recursively remove '.js.d.ts' files
-find dist -name "*.js.d.ts" -exec bash -c 'rm "${0}"' '{}' \;
+# Recursively rename '.js.d.ts' files in the 'dist' folder to '.d.ts'
+find dist -name "*.js.d.ts" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.js\.d\.ts/\.d\.ts/g")' '{}' \;
