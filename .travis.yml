@@ -9,6 +9,7 @@ before_install:
 - npm install -g greenkeeper-lockfile@1
 before_script:
 - greenkeeper-lockfile-update
+- npm run build
 after_script:
 - greenkeeper-lockfile-upload
 - npm run coverage
