@@ -16,12 +16,12 @@ after_script:
 - codecov
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    git config --global user.email "builds@travis-ci.com"
-    git config --global user.name "Travis CI"
-    npm --no-git-tag-version version patch
-    export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d")-$TRAVIS_BUILD_NUMBER
-    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-    git push --quiet https://$GITHUB_ACCESS_TOKEN@github.com/smockle/contrast $GIT_TAG > /dev/null 2>&1
+    git config --global user.email "builds@travis-ci.com";
+    git config --global user.name "Travis CI";
+    npm --no-git-tag-version version patch;
+    export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d")-$TRAVIS_BUILD_NUMBER;
+    git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER";
+    git push --quiet https://$GITHUB_ACCESS_TOKEN@github.com/smockle/contrast $GIT_TAG > /dev/null 2>&1;
   fi
 branches:
   except:
