@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "bash scripts/build.sh",
+    "build:windows": "call scripts/build.bat"
     "start": "node -r @std/esm dist/bin/index.mjs",
     "debug": "node --nolazy --inspect-brk=5858 -r @std/esm dist/bin/index.mjs",
     "test": "node -r @std/esm test/index.mjs | colortape",

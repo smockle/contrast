@@ -15,7 +15,7 @@ test_script:
   - node --version
   - npm --version
   # build
-  - npm run build
+  - npm run build:windows
   # run tests
   - npm test
 
