@@ -1,4 +1,5 @@
-import Hex from "../lib/hex";
+// @ts-check
+import { Hex } from "../dist/lib/index.mjs";
 import test from "tape";
 import util from "util";
 

@@ -14,6 +14,8 @@ test_script:
   # Output useful info for debugging.
   - node --version
   - npm --version
+  # build
+  - npm run build:windows
   # run tests
   - npm test
 
