@@ -1,4 +1,5 @@
-import HexColor from "../lib/hexcolor";
+// @ts-check
+import { HexColor } from "../dist/lib/index.mjs";
 import test from "tape";
 import util from "util";
 
