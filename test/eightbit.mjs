@@ -1,5 +1,6 @@
-import EightBit from "../lib/eightbit";
-import THRESHOLD from "./common";
+// @ts-check
+import { EightBit } from "../dist/lib";
+import { THRESHOLD } from "./common.mjs";
 import test from "tape";
 import util from "util";
 
