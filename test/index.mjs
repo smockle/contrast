@@ -1,5 +1,6 @@
-import "./eightbit";
-import "./eightbitcolor";
-import "./hex";
-import "./hexcolor";
-import "./contrast";
+// @ts-check
+import "./eightbit.mjs";
+import "./eightbitcolor.mjs";
+import "./hex.mjs";
+import "./hexcolor.mjs";
+import "./contrast.mjs";
