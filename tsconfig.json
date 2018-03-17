@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es2017",
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": false,
+    "strict": true
+  },
+  "files": [
+    "src/bin/index.js.ts",
+    "src/bin/index.mjs.ts",
+    "src/lib/contrast.mjs.ts",
+    "src/lib/eightbit.mjs.ts",
+    "src/lib/eightbitcolor.mjs.ts",
+    "src/lib/hex.mjs.ts",
+    "src/lib/hexcolor.mjs.ts",
+    "src/lib/index.js.ts",
+    "src/lib/index.mjs.ts"
+  ]
+}

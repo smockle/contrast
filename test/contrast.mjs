@@ -1,5 +1,7 @@
-import Contrast from "../lib/contrast";
-import THRESHOLD from "./common";
+// @ts-check
+import { Contrast } from "../dist/lib/index.mjs";
+// @ts-ignore
+import { THRESHOLD } from "./common.mjs";
 import test from "tape";
 import util from "util";
 
