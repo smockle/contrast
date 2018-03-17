@@ -11,7 +11,7 @@ const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
 function getVersion(): string | undefined {
-  const filename: string = resolve(dirname, "../package.json");
+  const filename: string = resolve(dirname, "../../package.json");
   const raw: string = readFileSync(filename, "utf8");
   if (!raw) {
     return;
