@@ -50,6 +50,6 @@
     "cjs": true
   },
   "dependencies": {
-    "@std/esm": "^0.25.0"
+    "@std/esm": "^0.26.0"
   }
 }
