@@ -1,4 +1,4 @@
-require = require("@std/esm")(module);
+require = require("esm")(module);
 
 const { Contrast } = require("./contrast.mjs");
 const { EightBit } = require("./eightbit.mjs");

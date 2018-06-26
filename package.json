@@ -13,8 +13,8 @@
   "scripts": {
     "build": "bash scripts/build.sh",
     "build:windows": "call scripts/build.bat",
-    "start": "node -r @std/esm dist/bin/index.mjs",
-    "debug": "node --nolazy --inspect-brk=5858 -r @std/esm dist/bin/index.mjs",
+    "start": "node -r esm dist/bin/index.mjs",
+    "debug": "node --nolazy --inspect-brk=5858 -r esm dist/bin/index.mjs",
     "test": "jest",
     "_version": "bash scripts/version.sh",
     "precommit": "lint-staged"
@@ -38,7 +38,7 @@
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
     "ts-jest": "^22.4.1",
-    "typescript": "^2.8.0-rc"
+    "typescript": "^2.9.2"
   },
   "lint-staged": {
     "*.{js,mjs,ts}": [
@@ -46,10 +46,7 @@
       "git add"
     ]
   },
-  "@std/esm": {
-    "cjs": true
-  },
   "dependencies": {
-    "@std/esm": "^0.26.0"
+    "esm": "^3.0.55"
   }
 }

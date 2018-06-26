@@ -1,18 +1,24 @@
 #!/usr/bin/env node
-import { Contrast } from "../lib/index.mjs";
-import { readFileSync } from "fs";
-import { resolve } from "path";
+declare global  {
+  interface ImportMeta {
+      url: string;
+  }
+}
 
-// TODO: Replace this when `import.meta` is accepted: https://github.com/tc39/proposal-import-meta
-// See also: https://github.com/standard-things/esm/issues/52
-const dirname: string = __dirname;
+import { Contrast } from "../lib/index.mjs";
+import { existsSync, readFileSync } from "fs";
+import * as url from "url";
+const { URL } = url;
 
 const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
 function getVersion(): string | undefined {
-  const filename: string = resolve(dirname, "../../package.json");
-  const raw: string = readFileSync(filename, "utf8");
+  const path: url.URL = new URL("package.json", import.meta.url);
+  if (!existsSync(path)) {
+    return;
+  }
+  const raw: string = readFileSync(path, { encoding: "utf-8" });
   if (!raw) {
     return;
   }
