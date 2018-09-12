@@ -1,7 +1,7 @@
 # contrast
 
 [![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
-[![Build Status](https://travis-ci.org/smockle/contrast.svg?branch=master)](https://travis-ci.org/smockle/contrast)
+[![Build Status](https://travis-ci.com/smockle/contrast.svg?branch=master)](https://travis-ci.org/smockle/contrast)
 [![codecov](https://codecov.io/gh/smockle/contrast/branch/master/graph/badge.svg)](https://codecov.io/gh/smockle/contrast)
 [![Known Vulnerabilities](https://snyk.io/test/github/smockle/contrast/badge.svg)](https://snyk.io/test/github/smockle/contrast)
 [![Greenkeeper badge](https://badges.greenkeeper.io/smockle/contrast.svg)](https://greenkeeper.io/)
