@@ -4,22 +4,19 @@
 # https://docs.microsoft.com/vsts/pipelines/languages/javascript
 
 pool:
-  vmImage: 'win1803'
+  vmImage: "win1803"
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "8.x"
+    displayName: "Install Node.js"
 
-- script: |
-    npm install
-  displayName: 'Install dependencies from npm'
+  - script: npm install
+    displayName: "Install dependencies from npm"
 
-- script: |
-    npm run build:windows
-  displayName: 'Run build'
+  - script: npm run build:windows
+    displayName: "Run build"
 
-  - script: |
-    npm test
-  displayName: 'Run tests'
+  - script: npm test
+    displayName: "Run tests"
