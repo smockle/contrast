@@ -20,3 +20,8 @@ steps:
 
   - script: npm test
     displayName: "Run tests"
+
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: "JUnit"
+      testResultsFiles: "artifacts/junit.xml"

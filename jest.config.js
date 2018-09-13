@@ -4,5 +4,6 @@ module.exports = {
   },
   testRegex: ".*\\.spec\\.ts$",
   moduleFileExtensions: ["ts", "js", "mjs", "json", "node"],
-  collectCoverage: true
+  collectCoverage: true,
+  reporters: ["default", ["jest-junit", { output: "./artifacts/junit.xml" }]]
 };

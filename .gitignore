@@ -1,5 +1,6 @@
 node_modules
 coverage
+artifacts
 dist
 .esm-cache
 .nyc_output
