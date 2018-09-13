@@ -25,3 +25,4 @@ steps:
     inputs:
       testRunner: "JUnit"
       testResultsFiles: "artifacts/junit.xml"
+    displayName: "Publish test results"
