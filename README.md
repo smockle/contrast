@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
 [![Build Status](https://travis-ci.com/smockle/contrast.svg?branch=master)](https://travis-ci.com/smockle/contrast)
+[![Build Status](https://smockle.visualstudio.com/contrast/_apis/build/status/smockle.contrast)](https://smockle.visualstudio.com/contrast/_build/latest?definitionId=1)
 [![codecov](https://codecov.io/gh/smockle/contrast/branch/master/graph/badge.svg)](https://codecov.io/gh/smockle/contrast)
 [![Known Vulnerabilities](https://snyk.io/test/github/smockle/contrast/badge.svg)](https://snyk.io/test/github/smockle/contrast)
 [![Greenkeeper badge](https://badges.greenkeeper.io/smockle/contrast.svg)](https://greenkeeper.io/)
