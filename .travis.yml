@@ -20,6 +20,8 @@ deploy:
   - provider: npm
     skip_cleanup: true
     email: bot@smockle.com
+    api_key:
+      secure: J6A/bsC/UGYnQPvUku6XAO1RUdHhy2oNB8I2R6NJixJPysOXoa4ksIXVZ2rEW5axzrn8tav+nwM0KK1m0JjV126saMrXKGzV6vXhK4xRLFOKP9ia15k5afeyn64XB2D0kZmurO6IIXmeXNrDmVS7NKAoUjiuiZaGeqlMY3bLmoPxYH3DGKaQr8O6l79JKUEWuaC5IZQs/K82DAPsGrn0B8+Wuynq0alilBdmVrIHBFDvxxDRrw7mVoBTuzqb0hjaObGEyt46HcvkP2ur5iAR70wvUjTn/hpvJsn+FXx33o+QBjLwj7LiBmklmTr7yjoUmS1Xa3z+37IlGCPRSUuFIMsn2YCCukvmSns0WX2SrEnjJSS/SjYq6LniEp0qi7JvaH5vdihKalD0iyW7AYdlLsju2RDrsFqPir73adXlwuBopqc4AGdEcYfMV/rTEWbWrGkvcNvCbBwed4CpwyJNhyLu6wMUxHaA7wHL3uJs30w4Xl28BguDWDcVBUBPbA9RTM519WpXspGgqays6dOPHfS8Zw1/fnHcazdUgZuSnI55YDlfaZdqLNC+XLe7E6zK0rT9ixu4Oi/omEDzq3NtoGbDaLoIKvo5wCHT9Yoh4wUAiOS9E4MMrWmnOHJa00IjzyamtfBGPvtavAnHzT66w8tuRwbHs+XR4P3bzBWotgQ=
     on:
       branch: master
       repo: smockle/contrast
