@@ -5,7 +5,8 @@
     "rootDir": "src",
     "outDir": "dist",
     "sourceMap": false,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true
   },
   "files": [
     "src/bin/index.js.ts",

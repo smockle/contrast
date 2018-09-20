@@ -3,7 +3,7 @@ import { inspect } from "util";
 
 describe("HexColor", () => {
   test("constructor", () => {
-    expect(HexColor("#0080FF").G.valueOf()).toEqual("80");
+    expect((HexColor("#0080FF").G || {}).valueOf()).toEqual("80");
   });
   test("constructor, two-length", () => {
     expect(HexColor("#80").value).toEqual("808080");
