@@ -1,6 +1,6 @@
 {
   "name": "@smockle/contrast",
-  "version": "4.0.28",
+  "version": "4.0.29",
   "description": "Analyse luminosity contrast ratio",
   "files": [
     "dist"
@@ -33,19 +33,10 @@
     "@types/jest": "^23.0.0",
     "@types/node": "^10.0.3",
     "codecov": "^3.0.0",
-    "husky": "^0.14.3",
     "jest": "^23.0.0",
     "jest-junit": "^5.1.0",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1",
     "ts-jest": "^23.10.2",
     "typescript": "^2.9.2"
-  },
-  "lint-staged": {
-    "*.{js,mjs,ts}": [
-      "./node_modules/.bin/prettier --write",
-      "git add"
-    ]
   },
   "dependencies": {
     "esm": "^3.0.55"
