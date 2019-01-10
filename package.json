@@ -34,7 +34,7 @@
     "@types/node": "^10.0.3",
     "codecov": "^3.0.0",
     "jest": "^23.0.0",
-    "jest-junit": "^5.1.0",
+    "jest-junit": "^6.0.0",
     "ts-jest": "^23.10.2",
     "typescript": "^2.9.2"
   },
