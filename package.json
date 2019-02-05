@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
-    "@types/jest": "^23.0.0",
+    "@types/jest": "^24.0.0",
     "@types/node": "^10.0.3",
     "codecov": "^3.0.0",
     "jest": "^23.0.0",
