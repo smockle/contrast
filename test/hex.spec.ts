@@ -3,28 +3,27 @@ import { inspect } from "util";
 
 describe("Hex", () => {
   test("constructor, with #", () => {
-    expect(Hex("#FF").value).toEqual("FF");
+    expect(new Hex("#FF").value).toEqual("FF");
   });
   test("constructor, without #", () => {
-    expect(Hex("FF").value).toEqual("FF");
+    expect(new Hex("FF").value).toEqual("FF");
   });
   test("constructor, lowercase", () => {
-    expect(Hex("ff").value).toEqual("FF");
+    expect(new Hex("ff").value).toEqual("FF");
   });
   test("constructor, no args", () => {
-    expect(Hex().value).toEqual(null);
+    expect(new Hex().value).toEqual(null);
   });
   test("valueOf", () => {
-    expect(Hex("#80").valueOf()).toEqual("80");
+    expect(new Hex("#80").valueOf()).toEqual("80");
   });
   test("inspect", () => {
-    expect(inspect(Hex("#80"))).toEqual("#80");
+    expect(inspect(new Hex("#80"))).toEqual("#80");
   });
   test("toEightBit", () => {
-    expect(
-      Hex("#80")
-        .toEightBit()
-        .valueOf()
-    ).toEqual(128);
+    expect(new Hex("#80").toEightBit().valueOf()).toEqual(128);
+  });
+  test("toEightBit", () => {
+    expect(new Hex(null).toEightBit().valueOf()).toEqual(0);
   });
 });

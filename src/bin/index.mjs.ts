@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-declare global  {
+declare global {
   interface ImportMeta {
-      url: string;
+    url: string;
   }
 }
 
@@ -13,7 +13,7 @@ const { URL } = url;
 const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
-function getVersion(): string | undefined {
+function getVersion(): string | void {
   const path: url.URL = new URL("package.json", import.meta.url);
   if (!existsSync(path)) {
     return;
@@ -40,6 +40,6 @@ Examples:
   $ contrast "#333" "#F8"
   $ contrast black white`);
 } else {
-  const contrast = Contrast(foreground, background);
+  const contrast = new Contrast(foreground, background);
   console.log(contrast);
 }
