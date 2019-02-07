@@ -37,16 +37,16 @@ $ contrast black white
 const { Contrast } = require('@smockle/contrast')
 
 // Hexadecimal colors
-Contrast('#000000', '#FFFFFF')
+new Contrast('#000000', '#FFFFFF')
 
 // Shorthand hexadecimal colors
-Contrast('#000', '#FC0')
-  // equivalent to `Contrast('#000000', '#FFCC00')`
-Contrast('#000', '#F8')
-  // equivalent to `Contrast('#000000', '#F8F8F8')`
+new Contrast('#000', '#FC0')
+  // equivalent to `new Contrast('#000000', '#FFCC00')`
+new Contrast('#000', '#F8')
+  // equivalent to `new Contrast('#000000', '#F8F8F8')`
 
 // Named colors
-Contrast('black', 'white')
+new Contrast('black', 'white')
 ```
 
 ## Testing
@@ -55,8 +55,8 @@ Contrast('black', 'white')
 
 ## References
 
-* http://juicystudio.com/article/luminositycontrastratioalgorithm.php
-* https://www.w3.org/TR/WCAG20/#contrast-ratiodef
-* https://www.w3.org/TR/WCAG20/#relativeluminancedef
-* https://www.w3.org/Graphics/Color/sRGB.html
-* https://stackoverflow.com/a/12894053/1923134
+- http://juicystudio.com/article/luminositycontrastratioalgorithm.php
+- https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+- https://www.w3.org/TR/WCAG20/#relativeluminancedef
+- https://www.w3.org/Graphics/Color/sRGB.html
+- https://stackoverflow.com/a/12894053/1923134
