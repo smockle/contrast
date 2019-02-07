@@ -1,16 +1,5 @@
 import { EightBit } from "./eightbit.mjs";
 
-export interface Hex {
-  /** The string representation of a hexadecimal value between 0 ("00") and 255 ("FF"). */
-  value: string | null;
-  /** Returns the current value, e.g. "FF". */
-  valueOf(this: Hex): string | null;
-  /** Returns a formatted representation of the current value, e.g. "#FF". */
-  inspect(this: Hex): string;
-  /** Returns an EightBit with the current value, e.g. EightBit(255). */
-  toEightBit(this: Hex): EightBit;
-}
-
 /**
  * Pads the provided string with another string (repeated, if needed) so that the resulting string reaches the given length. The padding is applied from the start (left) of the provided string.
  * @param string The provided string.
@@ -20,7 +9,7 @@ export interface Hex {
 function padStart(
   string: string,
   targetLength: number,
-  padString: string = " "
+  padString: string
 ): string {
   if (string.toString().length >= targetLength) {
     return string;
@@ -28,30 +17,33 @@ function padStart(
   return padStart(padString.concat(string), targetLength, padString);
 }
 
-export function Hex(value?: string | null): Hex {
-  const hex: Hex = Object.create(Hex.prototype);
-  hex.value = value
-    ? padStart(
-        String(value)
-          .replace("#", "")
-          .toUpperCase(),
-        2,
-        "0"
-      )
-    : null;
-  return hex;
+export class Hex {
+  /** The string representation of a hexadecimal value between 0 ("00") and 255 ("FF"). */
+  value: string | null;
+
+  constructor(value?: string | null) {
+    this.value = value
+      ? padStart(
+          String(value)
+            .replace("#", "")
+            .toUpperCase(),
+          2,
+          "0"
+        )
+      : null;
+  }
+  /** Returns the current value, e.g. "FF". */
+  valueOf(): string | null {
+    return this.value;
+  }
+  /** Returns a formatted representation of the current value, e.g. "#FF". */
+  inspect(): string {
+    return `#${this.value}`;
+  }
+  /** Returns an EightBit with the current value, e.g. EightBit(255). */
+  toEightBit(): EightBit {
+    const value: number | null =
+      typeof this.value === "string" ? parseInt(this.value, 16) : null;
+    return new EightBit(value);
+  }
 }
-
-(Hex.prototype as Hex).valueOf = function(this: Hex): string | null {
-  return this.value;
-};
-
-(Hex.prototype as Hex).inspect = function(this: Hex): string {
-  return `#${this.value}`;
-};
-
-(Hex.prototype as Hex).toEightBit = function(this: Hex): EightBit {
-  const value: number | null =
-    typeof this.value === "string" ? parseInt(this.value, 16) : null;
-  return EightBit(value);
-};
