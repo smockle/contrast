@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-
-# Abort if any command exits with error.
-set -e
-
-# By default, Bash takes the error status of the last item in pipeline.
-# Instead, exit when any item in the pipeline fails.
-set -o pipefail
+set -eo pipefail
 
 # Recursively rename '.js.ts' files in the 'dist' folder to '.js'.
 find dist -name "*.js.js" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.js\.js/\.js/g")' '{}' \;
