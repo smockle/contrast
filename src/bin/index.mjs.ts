@@ -7,6 +7,7 @@ declare global {
 
 import { Contrast } from "../lib/index.mjs";
 import { existsSync, readFileSync } from "fs";
+import { inspect } from "util";
 import * as url from "url";
 const { URL } = url;
 
@@ -41,5 +42,5 @@ Examples:
   $ contrast black white`);
 } else {
   const contrast = new Contrast(foreground, background);
-  console.log(contrast);
+  console.log(inspect(contrast));
 }
