@@ -1,4 +1,5 @@
 import { Hex } from "./hex.mjs";
+const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class EightBit implements EightBit {
   /** A number between 0 and 255. */
@@ -13,6 +14,10 @@ export class EightBit implements EightBit {
   }
   /** Returns a formatted representation of the current value, e.g. "EightBit(255)". */
   inspect(): string {
+    return `EightBit(${this.value})`;
+  }
+  /** Returns a formatted representation of the current value, e.g. "EightBit(255)". */
+  [inspect](): string {
     return `EightBit(${this.value})`;
   }
   /** Convert from sRGB to linear RGB. */

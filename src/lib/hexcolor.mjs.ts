@@ -1,5 +1,6 @@
 import { Hex } from "./hex.mjs";
 import { EightBitColor } from "./eightbitcolor.mjs";
+const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class HexColor {
   /** The string representation of a hexadecimal value between 0 ("00") and 255 ("FF"). */
@@ -51,6 +52,10 @@ export class HexColor {
   }
   /** Returns a formatted representation of the current value, e.g. "#FF". */
   inspect(): string {
+    return `#${this.value}`;
+  }
+  /** Returns a formatted representation of the current value, e.g. "#FF". */
+  [inspect](): string {
     return `#${this.value}`;
   }
   /** Returns an EightBit with the current value, e.g. { R: 255, G: 255, B: 255 }. */

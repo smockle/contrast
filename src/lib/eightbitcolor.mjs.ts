@@ -1,5 +1,6 @@
 import { EightBit } from "./eightbit.mjs";
 import { HexColor } from "./hexcolor.mjs";
+const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class EightBitColor {
   /** The current red value, e.g. EightBit(255). */
@@ -27,6 +28,13 @@ export class EightBitColor {
   }
   /** Returns a formatted representation of the current rgb value, e.g. "rgb(255, 255, 255)". */
   inspect(): string {
+    const R: number = this.R.valueOf();
+    const G: number = this.G.valueOf();
+    const B: number = this.B.valueOf();
+    return `rgb(${R}, ${G}, ${B})`;
+  }
+  /** Returns a formatted representation of the current rgb value, e.g. "rgb(255, 255, 255)". */
+  [inspect](): string {
     const R: number = this.R.valueOf();
     const G: number = this.G.valueOf();
     const B: number = this.B.valueOf();
