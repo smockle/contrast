@@ -20,6 +20,9 @@ stages:
   - "Test"
   - name: "Deploy"
     if: branch = master AND repo = smockle/contrast
+matrix:
+  allow_failures:
+    - os: windows
 jobs:
   include:
     # DEPLOY
