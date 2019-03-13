@@ -1,4 +1,7 @@
 language: node_js
+os:
+  - linux
+  - windows
 node_js:
   - lts/*
 notifications:
@@ -6,7 +9,8 @@ notifications:
     on_success: change
     on_failure: change
 before_script:
-  - npm run build
+  - if [[ "$TRAVIS_OS_NAME" != "windows" ]]; then npm run build; fi
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm run build:windows; fi
 after_script:
   - codecov
 deploy:
