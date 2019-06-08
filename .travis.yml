@@ -40,10 +40,4 @@ jobs:
             branch: master
             repo: smockle/contrast
             tags: false
-        - provider: script
-          script: bash scripts/publish.sh
-          skip_cleanup: true
-          on:
-            branch: master
-            repo: smockle/contrast
-            tags: false
+      after_deploy: bash scripts/publish.sh
