@@ -25,7 +25,7 @@ matrix:
     - os: windows
 jobs:
   include:
-    # DEPLOY 
+    # DEPLOY
     - stage: "Deploy"
       name: "Deploy"
       script: skip
