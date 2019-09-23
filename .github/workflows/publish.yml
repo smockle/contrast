@@ -28,7 +28,9 @@ jobs:
 
       - name: Report coverage
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: codecov
+        uses: codecov/codecov-action@master
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
 
       - name: Bump version
         if: contains(github.event.commits[0].message, '[skip ci]') == false

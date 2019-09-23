@@ -33,4 +33,6 @@ jobs:
 
       - name: Report coverage (Non-Windows)
         if: matrix.os == 'ubuntu-latest'
-        run: codecov
+        uses: codecov/codecov-action@master
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
