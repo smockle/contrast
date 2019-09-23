@@ -1,12 +1,9 @@
 name: Test
-on:
-  pull_request: ~
-  push:
-    branches: ["*", "!master"]
+on: [pull_request]
 
 jobs:
   test:
-    name: "Test"
+    name: Test
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
