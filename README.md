@@ -1,7 +1,7 @@
 # contrast
 
 [![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
-[![Build Status](https://travis-ci.com/smockle/contrast.svg?branch=master)](https://travis-ci.com/smockle/contrast)
+[![Publish Workflow](https://github.com/smockle/contrast/workflows/Publish/badge.svg)](https://github.com/smockle/contrast/actions)
 [![codecov](https://codecov.io/gh/smockle/contrast/branch/master/graph/badge.svg)](https://codecov.io/gh/smockle/contrast)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=smockle/contrast)](https://dependabot.com)
 

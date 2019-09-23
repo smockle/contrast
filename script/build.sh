@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
+# Clean 'dist' directory
+rm -Rf dist/*
+
+# Compile TypeScript using config in 'tsconfig.json'
+tsc -d
+
+# Rename files in 'dist' to support ES modules with '.mjs'
 # Recursively rename '.js.ts' files in the 'dist' folder to '.js'.
 find dist -name "*.js.js" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.js\.js/\.js/g")' '{}' \;
 
@@ -9,3 +16,4 @@ find dist -name "*.mjs.js" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "
 
 # Recursively rename '.js.d.ts' files in the 'dist' folder to '.d.ts'
 find dist -name "*.js.d.ts" -exec bash -c 'mv "${0}" $(echo "${0}" | perl -p -e "s/\.js\.d\.ts/\.d\.ts/g")' '{}' \;
+

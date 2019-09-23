@@ -11,12 +11,11 @@
     "contrast": "dist/bin/index.js"
   },
   "scripts": {
-    "build": "bash scripts/build.sh",
-    "build:windows": "call scripts/build.bat",
+    "build": "bash script/build.sh",
+    "build:windows": "call script/build.bat",
     "start": "node -r esm dist/bin/index.mjs",
     "debug": "node --nolazy --inspect-brk=5858 -r esm dist/bin/index.mjs",
     "test": "jest",
-    "_version": "bash scripts/version.sh",
     "precommit": "lint-staged"
   },
   "repository": {
@@ -32,7 +31,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
-    "codecov": "^3.1.0",
     "jest": "^24.8.0",
     "jest-junit": "^8.0.0",
     "ts-jest": "^24.0.2",
