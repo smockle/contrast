@@ -18,16 +18,16 @@ jobs:
         run: npm ci
 
       - name: Build (Non-Windows)
-        if: matrix.os == "ubuntu-latest"
+        if: matrix.os == ubuntu-latest
         run: npm run build
 
       - name: Build (Windows)
-        if: matrix.os == "windows-latest"
+        if: matrix.os == windows-latest
         run: npm run build:windows
 
       - name: Test
         run: npm test
 
       - name: Report coverage (Non-Windows)
-        if: matrix.os == "ubuntu-latest"
+        if: matrix.os == ubuntu-latest
         run: codecov
