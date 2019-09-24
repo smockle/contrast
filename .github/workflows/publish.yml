@@ -41,6 +41,7 @@ jobs:
       - name: Publish
         if: contains(github.event.commits[0].message, '[skip ci]') == false
         uses: "actions/npm@master"
-        args: "publish --access public"
+        with:
+          args: "publish --access public"
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
