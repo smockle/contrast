@@ -1,4 +1,4 @@
-import { HexColor } from "./hexcolor.mjs";
+import { HexColor } from "./hexcolor";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class Contrast {
@@ -24,10 +24,6 @@ export class Contrast {
   /** Returns the luminosity contrast ratio. */
   valueOf(): number {
     return this.value;
-  }
-  /** Returns a formatted representation of the luminosity contrast ratio, e.g. "4.5:1". */
-  inspect(): string {
-    return `${this.value}:1`;
   }
   /** Returns a formatted representation of the luminosity contrast ratio, e.g. "4.5:1". */
   [inspect](): string {

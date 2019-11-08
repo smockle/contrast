@@ -1,5 +1,5 @@
-import { Contrast } from "../src/lib/index.mjs";
-import { THRESHOLD } from "./util.mjs";
+import { Contrast } from "../lib/index";
+import { THRESHOLD } from "./util";
 import { inspect } from "util";
 
 describe("Contrast", () => {

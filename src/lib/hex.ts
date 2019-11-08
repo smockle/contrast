@@ -1,4 +1,4 @@
-import { EightBit } from "./eightbit.mjs";
+import { EightBit } from "./eightbit";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 /**
@@ -36,10 +36,6 @@ export class Hex {
   /** Returns the current value, e.g. "FF". */
   valueOf(): string | null {
     return this.value;
-  }
-  /** Returns a formatted representation of the current value, e.g. "#FF". */
-  inspect(): string {
-    return `#${this.value}`;
   }
   /** Returns a formatted representation of the current value, e.g. "#FF". */
   [inspect](): string {

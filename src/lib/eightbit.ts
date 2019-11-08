@@ -1,4 +1,4 @@
-import { Hex } from "./hex.mjs";
+import { Hex } from "./hex";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class EightBit implements EightBit {
@@ -11,10 +11,6 @@ export class EightBit implements EightBit {
   /** Returns the current value, e.g. 255. */
   valueOf(): number {
     return this.value;
-  }
-  /** Returns a formatted representation of the current value, e.g. "EightBit(255)". */
-  inspect(): string {
-    return `EightBit(${this.value})`;
   }
   /** Returns a formatted representation of the current value, e.g. "EightBit(255)". */
   [inspect](): string {

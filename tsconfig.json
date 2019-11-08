@@ -1,23 +1,14 @@
 {
   "compilerOptions": {
-    "module": "esnext",
     "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "rootDir": "src",
     "outDir": "dist",
-    "sourceMap": false,
-    "strict": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node"
+    "declaration": true
   },
-  "files": [
-    "src/bin/index.js.ts",
-    "src/bin/index.mjs.ts",
-    "src/lib/contrast.mjs.ts",
-    "src/lib/eightbit.mjs.ts",
-    "src/lib/eightbitcolor.mjs.ts",
-    "src/lib/hex.mjs.ts",
-    "src/lib/hexcolor.mjs.ts",
-    "src/lib/index.js.ts",
-    "src/lib/index.mjs.ts"
-  ]
+  "include": ["**/*.ts"]
 }

@@ -1,5 +1,5 @@
-import { EightBit, EightBitColor } from "../src/lib/index.mjs";
-import { THRESHOLD } from "./util.mjs";
+import { EightBit, EightBitColor } from "../lib/index";
+import { THRESHOLD } from "./util";
 import { inspect } from "util";
 
 describe("EightBitColor", () => {

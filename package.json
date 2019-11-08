@@ -1,22 +1,20 @@
 {
   "name": "@smockle/contrast",
-  "version": "5.0.80",
+  "version": "6.0.0",
   "description": "Analyse luminosity contrast ratio",
   "files": [
     "dist"
   ],
-  "main": "dist/lib/index",
+  "type": "module",
+  "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
   "bin": {
     "contrast": "dist/bin/index.js"
   },
   "scripts": {
-    "build": "bash script/build.sh",
-    "build:windows": "call script/build.bat",
-    "start": "node -r esm dist/bin/index.mjs",
-    "debug": "node --nolazy --inspect-brk=5858 -r esm dist/bin/index.mjs",
+    "build": "tsc",
     "test": "jest",
-    "precommit": "lint-staged"
+    "start": "node --experimental-modules --es-module-specifier-resolution=node dist/bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -28,15 +26,24 @@
     "url": "https://github.com/smockle/contrast/issues"
   },
   "homepage": "https://github.com/smockle/contrast#readme",
+  "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "jest": "^24.8.0",
-    "jest-junit": "^9.0.0",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.3.1"
+    "@types/jest": "^24.0.22",
+    "@types/node": "^12.12.6",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
   },
-  "dependencies": {
-    "esm": "^3.2.1"
+  "engines": {
+    "node": ">= 12.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "testRegex": "(\\.|/)(test|spec)\\.[jt]sx?$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/dist/"
+    ]
   }
 }

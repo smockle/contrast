@@ -15,36 +15,36 @@ Run `npm install --save @smockle/contrast` to add `contrast` to your project.
 
 ### Shell
 
-```Bash
+```sh
 # Hexadecimal colors
-$ contrast "#000000" "#FFFFFF"
+$ npx @smockle/contrast "#000000" "#FFFFFF"
 
 # Shorthand hexadecimal colors
-$ contrast "#000" "#FC0"
+$ npx @smockle/contrast "#000" "#FC0"
   # equivalent to `$ contrast "#000000" "#FFCC00"`
-$ contrast "#000" "#F8"
+$ npx @smockle/contrast "#000" "#F8"
   # equivalent to `$ contrast "#000000" "#F8F8F8"`
 
 # Named colors
-$ contrast black white
+$ npx @smockle/contrast black white
 ```
 
 ### JavaScript & TypeScript
 
-```JavaScript
-const { Contrast } = require('@smockle/contrast')
+```TypeScript
+import { Contrast } from "@smockle/contrast";
 
 // Hexadecimal colors
-new Contrast('#000000', '#FFFFFF')
+new Contrast("#000000", "#FFFFFF");
 
 // Shorthand hexadecimal colors
-new Contrast('#000', '#FC0')
-  // equivalent to `new Contrast('#000000', '#FFCC00')`
-new Contrast('#000', '#F8')
-  // equivalent to `new Contrast('#000000', '#F8F8F8')`
+new Contrast("#000", "#FC0");
+  // equivalent to `new Contrast("#000000", "#FFCC00")`
+new Contrast("#000", "#F8");
+  // equivalent to `new Contrast("#000000", "#F8F8F8")`
 
 // Named colors
-new Contrast('black', 'white')
+new Contrast("black", "white");
 ```
 
 ## Testing

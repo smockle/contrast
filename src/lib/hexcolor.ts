@@ -1,5 +1,5 @@
-import { Hex } from "./hex.mjs";
-import { EightBitColor } from "./eightbitcolor.mjs";
+import { Hex } from "./hex";
+import { EightBitColor } from "./eightbitcolor";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class HexColor {
@@ -35,9 +35,7 @@ export class HexColor {
           return `${_value}${_value}${_value}`;
         // Special case for '#ABC'
         case 3:
-          return `${_value[0]}${_value[0]}${_value[1]}${_value[1]}${_value[2]}${
-            _value[2]
-          }`;
+          return `${_value[0]}${_value[0]}${_value[1]}${_value[1]}${_value[2]}${_value[2]}`;
         default:
           return _value;
       }
@@ -49,10 +47,6 @@ export class HexColor {
   /** Returns the current value, e.g. "FF". */
   valueOf(): string | null {
     return this.value;
-  }
-  /** Returns a formatted representation of the current value, e.g. "#FF". */
-  inspect(): string {
-    return `#${this.value}`;
   }
   /** Returns a formatted representation of the current value, e.g. "#FF". */
   [inspect](): string {

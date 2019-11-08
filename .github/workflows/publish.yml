@@ -14,6 +14,12 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup Node.js (npm)
+        if: contains(github.event.commits[0].message, '[skip ci]') == false
+        uses: "actions/setup-node@v1"
+        with:
+          registry-url: "https://registry.npmjs.org"
+
       - name: Install dependencies
         if: contains(github.event.commits[0].message, '[skip ci]') == false
         run: npm ci
@@ -40,10 +46,20 @@ jobs:
           GITHUB_USER_NAME: smockle-bot
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
 
-      - name: Publish
+      - name: Publish (npm)
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        uses: "actions/npm@master"
-        with:
-          args: "publish --access public"
+        run: "npm publish --access public --@smockle:registry=https://registry.npmjs.org/"
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Setup Node.js (GPR)
+        if: contains(github.event.commits[0].message, '[skip ci]') == false
+        uses: "actions/setup-node@v1"
+        with:
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: Publish (GPR)
+        if: contains(github.event.commits[0].message, '[skip ci]') == false
+        run: "npm publish --access public --@smockle:registry=https://npm.pkg.github.com/"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}

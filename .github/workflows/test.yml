@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: ['ubuntu-latest', 'windows-latest']
+        os: ["ubuntu-latest", "windows-latest"]
     steps:
       - name: Get sources
         uses: actions/checkout@v1
@@ -17,13 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (Non-Windows)
-        if: matrix.os == 'ubuntu-latest'
+      - name: Build
         run: npm run build
-
-      - name: Build (Windows)
-        if: matrix.os == 'windows-latest'
-        run: npm run build:windows
 
       - name: Test
         run: npm test

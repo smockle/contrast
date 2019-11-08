@@ -1,4 +1,4 @@
-import { HexColor } from "../src/lib/index.mjs";
+import { HexColor } from "../lib/index";
 import { inspect } from "util";
 
 describe("HexColor", () => {

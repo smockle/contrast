@@ -1,4 +1,4 @@
-import { Hex } from "../src/lib/index.mjs";
+import { Hex } from "../lib/index";
 import { inspect } from "util";
 
 describe("Hex", () => {

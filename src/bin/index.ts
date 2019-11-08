@@ -1,21 +1,15 @@
-#!/usr/bin/env node
-declare global {
-  interface ImportMeta {
-    url: string;
-  }
-}
-
-import { Contrast } from "../lib/index.mjs";
+#!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
+import { Contrast } from "../lib/index";
 import { existsSync, readFileSync } from "fs";
 import { inspect } from "util";
-import * as url from "url";
+import url from "url";
 const { URL } = url;
 
 const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
 function getVersion(): string | void {
-  const path: url.URL = new URL("package.json", import.meta.url);
+  const path: url.URL = new URL("../../package.json", import.meta.url);
   if (!existsSync(path)) {
     return;
   }
