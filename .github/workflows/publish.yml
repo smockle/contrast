@@ -20,17 +20,31 @@ jobs:
         with:
           registry-url: "https://registry.npmjs.org"
 
+      - name: Locate yarn cache
+        if: contains(github.event.commits[0].message, '[skip ci]') == false
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Restore yarn cache
+        if: contains(github.event.commits[0].message, '[skip ci]') == false
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install dependencies
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: npm ci
+        run: yarn install
 
       - name: Build
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: npm run build
+        run: yarn run build
 
       - name: Test
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: npm test
+        run: yarn test
 
       - name: Report coverage
         if: contains(github.event.commits[0].message, '[skip ci]') == false
@@ -48,7 +62,7 @@ jobs:
 
       - name: Publish (npm)
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: "npm publish --access public --@smockle:registry=https://registry.npmjs.org/"
+        run: "yarn publish --access public --@smockle:registry=https://registry.npmjs.org/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
@@ -60,6 +74,6 @@ jobs:
 
       - name: Publish (GPR)
         if: contains(github.event.commits[0].message, '[skip ci]') == false
-        run: "npm publish --access public --@smockle:registry=https://npm.pkg.github.com/"
+        run: "yarn publish --access public --@smockle:registry=https://npm.pkg.github.com/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}

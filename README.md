@@ -9,7 +9,7 @@ Analyse luminosity contrast ratio
 
 ## Installation
 
-Run `npm install --save @smockle/contrast` to add `contrast` to your project.
+Run `yarn add @smockle/contrast` to add `contrast` to your project.
 
 ## Usage
 
@@ -17,16 +17,16 @@ Run `npm install --save @smockle/contrast` to add `contrast` to your project.
 
 ```sh
 # Hexadecimal colors
-$ npx @smockle/contrast "#000000" "#FFFFFF"
+$ contrast "#000000" "#FFFFFF"
 
 # Shorthand hexadecimal colors
-$ npx @smockle/contrast "#000" "#FC0"
+$ contrast "#000" "#FC0"
   # equivalent to `$ contrast "#000000" "#FFCC00"`
-$ npx @smockle/contrast "#000" "#F8"
+$ contrast "#000" "#F8"
   # equivalent to `$ contrast "#000000" "#F8F8F8"`
 
 # Named colors
-$ npx @smockle/contrast black white
+$ contrast black white
 ```
 
 ### JavaScript & TypeScript
@@ -49,7 +49,7 @@ new Contrast("black", "white");
 
 ## Testing
 
-`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `npm install` in the project folder to install dependencies. Run `npm test` to execute the tests.
+`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `yarn install` in the project folder to install dependencies. Run `yarn test` to execute the tests.
 
 ## References
 
