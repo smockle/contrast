@@ -28,7 +28,7 @@
   "homepage": "https://github.com/smockle/contrast#readme",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.22",
+    "@types/jest": "^25.1.0",
     "@types/node": "^13.1.0",
     "jest": "^25.1.0",
     "ts-jest": "^25.0.0",
