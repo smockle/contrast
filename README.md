@@ -36,7 +36,21 @@ import { Contrast } from "@smockle/contrast";
 
 // Hexadecimal colors
 new Contrast("#000000", "#FFFFFF");
-  // -> { foreground: HexColor, background: HexColor, value: 21 }
+  // => {
+  //      foreground: {
+  //        value: "000000",
+  //        R: { value: "00" },
+  //        G: { value: "00" },
+  //        B: { value: "00" },
+  //      },
+  //      background: {
+  //        value: "FFFFFF",
+  //        R: { value: "FF" },
+  //        G: { value: "FF" },
+  //        B: { value: "FF" },
+  //      },
+  //      value: 21,
+  //    }
 
 // Shorthand hexadecimal colors
 new Contrast("#000", "#FC0");
