@@ -9,7 +9,7 @@ Analyse luminosity contrast ratio
 
 ## Installation
 
-Run `yarn add @smockle/contrast` to add `contrast` to your project.
+Run `npm install @smockle/contrast` to add `contrast` to your project.
 
 ## Usage
 
@@ -64,7 +64,7 @@ new Contrast("black", "white");
 
 ## Testing
 
-`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `yarn install` in the project folder to install dependencies. Run `yarn test` to execute the tests.
+`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `npm install` in the project folder to install dependencies. Run `npm test` to execute the tests.
 
 ## References
 
