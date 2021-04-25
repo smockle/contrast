@@ -1,19 +1,18 @@
 #!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
-import { Contrast } from "../lib/index";
-import { existsSync, readFileSync } from "fs";
-import { inspect } from "util";
-import url from "url";
-const { URL } = url;
+import { Contrast } from '../lib/index';
+import { existsSync, readFileSync } from 'fs';
+import { resolve } from 'path';
+import { inspect } from 'util';
 
 const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
 function getVersion(): string | void {
-  const path: url.URL = new URL("../../package.json", import.meta.url);
+  const path = resolve(process.cwd(), 'package.json');
   if (!existsSync(path)) {
     return;
   }
-  const raw: string = readFileSync(path, { encoding: "utf-8" });
+  const raw: string = readFileSync(path, { encoding: 'utf-8' });
   if (!raw) {
     return;
   }

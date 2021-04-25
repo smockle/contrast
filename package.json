@@ -5,7 +5,7 @@
   "files": [
     "dist"
   ],
-  "type": "module",
+  "type": "commonjs",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
   "bin": {
@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "start": "node --experimental-modules --es-module-specifier-resolution=node dist/bin/index.js"
+    "start": "node dist/bin/index.js"
   },
   "repository": {
     "type": "git",
