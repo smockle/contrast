@@ -1,4 +1,4 @@
-#!/usr/bin/env node --experimental-modules --es-module-specifier-resolution=node --no-warnings
+#!/usr/bin/env node --experimental-specifier-resolution=node --no-warnings
 import { Contrast } from "../lib/index";
 import { existsSync, readFileSync } from "fs";
 import { inspect } from "util";
