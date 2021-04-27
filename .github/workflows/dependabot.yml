@@ -6,8 +6,7 @@ jobs:
     name: Dependabot
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'pull_request' &&
-      (github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]')
+      github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]'
     steps:
       - name: Add "@dependabot merge" comment
         uses: actions/github-script@v4
