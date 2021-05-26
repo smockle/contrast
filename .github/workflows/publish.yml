@@ -17,8 +17,11 @@ jobs:
       - name: Setup Node.js (npm)
         uses: "actions/setup-node@v1"
         with:
-          node-version: "12.x"
+          node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
+
+      - name: Setup npm
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
 
       - name: Restore npm cache
         uses: actions/cache@v2
@@ -36,7 +39,7 @@ jobs:
             ${{ runner.os }}-node-modules-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -64,8 +67,11 @@ jobs:
       - name: Setup Node.js (GPR)
         uses: "actions/setup-node@v1"
         with:
-          node-version: "12.x"
+          node-version: "14.x"
           registry-url: "https://npm.pkg.github.com"
+
+      - name: Setup npm
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
 
       - name: Publish (GPR)
         run: "npm publish --access public --@smockle:registry=https://npm.pkg.github.com/"
