@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "start": "node --experimental-specifier-resolution=node dist/bin/index.js"
   },
   "repository": {
@@ -37,7 +37,7 @@
     "node": ">= 14.0.0"
   },
   "jest": {
-    "preset": "ts-jest",
+    "preset": "ts-jest/presets/default-esm",
     "collectCoverage": true,
     "testRegex": "(\\.|/)(test|spec)\\.[jt]sx?$",
     "testPathIgnorePatterns": [
