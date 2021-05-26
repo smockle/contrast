@@ -1,6 +1,8 @@
 import { EightBit } from "../lib/index";
-import { THRESHOLD } from "./util";
 import { inspect } from "util";
+
+/** Tolerance for comparing floating point numbers. */
+export const THRESHOLD: number = 0.000001;
 
 describe("EightBit", () => {
   test("constructor", () => {
