@@ -39,6 +39,7 @@
   "jest": {
     "preset": "ts-jest/presets/default-esm",
     "collectCoverage": true,
+    "extensionsToTreatAsEsm": [".ts"],
     "testRegex": "(\\.|/)(test|spec)\\.[jt]sx?$",
     "testPathIgnorePatterns": [
       "/node_modules/",
