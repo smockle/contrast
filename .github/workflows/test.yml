@@ -21,7 +21,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Setup npm
-        run: npm i -g npm@7 --registry=https://registry.npmjs.org && echo npm --version
+        run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
 
       - name: Restore npm cache
         uses: actions/cache@v2
