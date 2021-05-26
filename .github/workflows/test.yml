@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # Since uprading to Jest 27 in https://github.com/smockle/contrast/pull/330,
+        # Since upgrading to Jest 27 in https://github.com/smockle/contrast/pull/330,
         # `npm test` fails on Windows with `ReferenceError: exports is not defined`.
         # This may be fixed with https://github.com/facebook/jest/issues/9430.
         # For now, skipping Windows tests:
