@@ -37,7 +37,7 @@
     "node": ">= 14.0.0"
   },
   "jest": {
-    "preset": "ts-jest/presets/default-esm",
+    "preset": "ts-jest",
     "collectCoverage": true,
     "testRegex": "(\\.|/)(test|spec)\\.[jt]sx?$",
     "testPathIgnorePatterns": [
