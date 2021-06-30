@@ -37,12 +37,18 @@
     "node": ">= 14.0.0"
   },
   "jest": {
-    "preset": "ts-jest",
+    "preset": "ts-jest/presets/default-esm",
     "collectCoverage": true,
     "testRegex": "(\\.|/)(test|spec)\\.[jt]sx?$",
     "testPathIgnorePatterns": [
       "/node_modules/",
       "<rootDir>/dist/"
-    ]
+    ],
+    "extensionsToTreatAsEsm": [".ts"],
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    }
   }
 }
