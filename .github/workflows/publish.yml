@@ -9,71 +9,31 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.commits[0].message, '[skip ci]') == false
     steps:
-      - name: Get sources
-        uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          fetch-depth: 1
-
-      - name: Setup Node.js (npm)
-        uses: "actions/setup-node@v1"
-        with:
-          node-version: "14.x"
+          node-version: "14"
           registry-url: "https://registry.npmjs.org"
-
-      - name: Setup npm
-        run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
-
-      - name: Restore npm cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Test
-        run: npm test
-
-      - name: Report coverage
-        uses: codecov/codecov-action@v1
+      - run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - uses: codecov/codecov-action@v2
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-
-      - name: Bump version
-        uses: "smockle/action-version@main"
+      - uses: smockle/action-version@main
         env:
           GITHUB_USER_EMAIL: bot@smockle.com
           GITHUB_USER_NAME: smockle-bot
           GITHUB_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-
-      - name: Publish (npm)
-        run: "npm publish --access public --@smockle:registry=https://registry.npmjs.org/"
+      - run: "npm publish --access public --@smockle:registry=https://registry.npmjs.org/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-
-      - name: Setup Node.js (GPR)
-        uses: "actions/setup-node@v1"
+      - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "14"
           registry-url: "https://npm.pkg.github.com"
-
-      - name: Setup npm
         run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
-
-      - name: Publish (GPR)
-        run: "npm publish --access public --@smockle:registry=https://npm.pkg.github.com/"
+      - run: "npm publish --access public --@smockle:registry=https://npm.pkg.github.com/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
