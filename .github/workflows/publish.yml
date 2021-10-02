@@ -1,13 +1,15 @@
 name: Publish
 on:
-  push:
+  workflow_run:
+    workflows: ["Prepublish"]
     branches: ["main"]
+    types: ["completed"]
 
 jobs:
   publish:
     name: Publish
     runs-on: ubuntu-latest
-    if: contains(github.event.commits[0].message, '[skip ci]') == false
+    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false && github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
         with:
