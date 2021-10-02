@@ -1,0 +1,12 @@
+name: Prepublish
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  prepublish:
+    name: Prepublish
+    runs-on: ubuntu-latest
+    if: contains(github.event.commits[0].message, '[skip ci]') == false
+    steps:
+      - run: "echo 'Prepublish complete!'"
