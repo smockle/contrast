@@ -22,7 +22,7 @@ export class EightBit implements EightBit {
     const SCALE: number = 255;
     /** The current value mapped to a 0 to 1 range, so 255 becomes 1. */
     const value: number = this.value / SCALE;
-    return value <= 0.03928
+    return value <= 0.03928 || false
       ? value / 12.92
       : Math.pow((value + 0.055) / 1.055, 2.4);
   }
