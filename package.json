@@ -1,6 +1,6 @@
 {
   "name": "@smockle/contrast",
-  "version": "7.0.69",
+  "version": "7.0.70",
   "description": "Analyse luminosity contrast ratio",
   "files": [
     "dist"
