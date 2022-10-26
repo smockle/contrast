@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_ACCESS_TOKEN }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "18"
           registry-url: "https://registry.npmjs.org"
@@ -34,7 +34,7 @@ jobs:
       - run: "npm publish --access public --@smockle:registry=https://registry.npmjs.org/"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "18"
           registry-url: "https://npm.pkg.github.com"
