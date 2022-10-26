@@ -8,7 +8,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request_target' && github.actor == 'dependabot[bot]' }}
     steps:
       - name: Add "@dependabot merge" comment
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GH_ACCESS_TOKEN}}
           script: |
