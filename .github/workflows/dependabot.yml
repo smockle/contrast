@@ -1,6 +1,11 @@
 name: Dependabot
 on: [pull_request]
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   dependabot:
     name: Dependabot
@@ -10,7 +15,7 @@ jobs:
       - name: Approve (as @smockle-bot)
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GH_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.rest.pulls.createReview({
               owner: context.payload.repository.owner.login,
@@ -21,7 +26,7 @@ jobs:
       - name: Add "@dependabot merge" comment
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GH_TOKEN}}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.rest.issues.createComment({
               owner: context.payload.repository.owner.login,
