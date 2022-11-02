@@ -63,13 +63,14 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            return await github.rest.pulls.create({
+            return github.rest.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: "${{ format('🚀 Release v{0}', steps.get-version.outputs.version) }}",
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: 'main'
             });
+      - run: echo "${{ steps.create-pr.outputs.result }}"
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
         with:
