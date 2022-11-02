@@ -78,7 +78,7 @@ jobs:
             github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: steps.create-pr.outputs.result.number,
+              pull_number: "${{steps.create-pr.outputs.result.number}}",
               event: "APPROVE",
             })
       - name: Merge
@@ -89,7 +89,7 @@ jobs:
             github.rest.pulls.merge({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: steps.create-pr.outputs.result.number
+              pull_number: "${{steps.create-pr.outputs.result.number}}"
             });
 
   publish-npm:
