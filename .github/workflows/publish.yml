@@ -70,10 +70,7 @@ jobs:
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: 'main'
             });
-      - run: echo "${{ steps.create-pr.outputs.result.data }}"
-      - run: echo "${{ steps.create-pr.outputs.result }}"
-      - run: echo "${{ toJson(steps.create-pr.outputs.result)['data']['number'] }}"
-      - run: echo "${{ fromJson(steps.create-pr.outputs.result)['data']['number'] }}"
+      - run: echo "${{ fromJson(steps.create-pr.outputs.result).data.number }}"
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
         with:
@@ -82,7 +79,7 @@ jobs:
             github.rest.pulls.createReview({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: "${{steps.create-pr.outputs.result.data.number}}",
+              pull_number: "${{fromJson(steps.create-pr.outputs.result).data.number}}",
               event: "APPROVE",
             })
       - name: Merge
@@ -93,7 +90,7 @@ jobs:
             github.rest.pulls.merge({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: "${{steps.create-pr.outputs.result.data.number}}"
+              pull_number: "${{fromJson(steps.create-pr.outputs.result).data.number}}"
             });
 
   publish-npm:
