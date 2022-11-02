@@ -1,0 +1,34 @@
+name: Postpublish
+on: [pull_request]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  postpublish:
+    name: Postpublish
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(context.payload.pull_request.title, "🚀 Release") && github.actor == 'smockle' }}
+    steps:
+      - name: Approve (as @github-actions[bot])
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+              event: "APPROVE",
+            })
+      - name: Merge
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.pulls.merge({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number
+            });
