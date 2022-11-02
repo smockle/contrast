@@ -70,7 +70,10 @@ jobs:
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: 'main'
             });
-      - run: echo "${{ steps.create-pr.outputs.result.data.number }}"
+      - run: echo "${{ steps.create-pr.outputs.result.data }}"
+      - run: echo "${{ steps.create-pr.outputs.result }}"
+      - run: echo "${{ toJson(steps.create-pr.outputs.result)['data']['number'] }}"
+      - run: echo "${{ fromJson(steps.create-pr.outputs.result)['data']['number'] }}"
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
         with:
