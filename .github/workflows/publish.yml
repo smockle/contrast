@@ -51,6 +51,7 @@ jobs:
           ${{ format('git commit -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
       - run: git push -f -u origin "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
       # - Tag
+      - run: ${{ format('git tag -d v{0} || exit 0', steps.get-version.outputs.version) }}
       - run: ${{ format('git push --delete origin v{0} || exit 0', steps.get-version.outputs.version) }}
       - run: |
           ${{ format('git tag -a v{0} -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
