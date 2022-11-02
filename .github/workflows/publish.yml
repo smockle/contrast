@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   packages: write
+  pull-requests: write
 
 concurrency:
   group: ${{ github.workflow }}
@@ -63,11 +64,11 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.rest.pulls.create({
-              owner: github.event.repository.owner.login,
-              repo: github.event.repository.name,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               title: "${{ format('🚀 Release v{0}', steps.get-version.outputs.version) }}",
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
-              base: github.event.repository.default_branch
+              base: context.repo.defaulth
             });
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
@@ -75,8 +76,8 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.rest.pulls.createReview({
-              owner: github.event.repository.owner.login,
-              repo: github.event.repository.name,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               pull_number: steps.create-pr.outputs.result.number,
               event: "APPROVE",
             })
@@ -86,8 +87,8 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.rest.pulls.merge({
-              owner: github.event.repository.owner.login,
-              repo: github.event.repository.name,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
               pull_number: steps.create-pr.outputs.result.number
             });
 
