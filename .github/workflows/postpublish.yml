@@ -9,7 +9,7 @@ jobs:
   postpublish:
     name: Postpublish
     runs-on: ubuntu-latest
-    if: ${{ startsWith(context.payload.pull_request.title, "🚀 Release") && github.actor == 'smockle' }}
+    if: ${{ startsWith(context.payload.pull_request.title, '🚀 Release') && github.actor == 'smockle' }}
     steps:
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
