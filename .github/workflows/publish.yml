@@ -68,7 +68,7 @@ jobs:
               repo: context.repo.repo,
               title: "${{ format('🚀 Release v{0}', steps.get-version.outputs.version) }}",
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
-              base: context.repo.defaulth
+              base: context.repo.default_branch
             });
       - name: Approve (as @github-actions[bot])
         uses: actions/github-script@v6
