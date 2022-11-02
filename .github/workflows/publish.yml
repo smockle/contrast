@@ -51,7 +51,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            octokit.rest.pulls.create({
+            github.rest.pulls.create({
               owner: context.payload.repository.owner.login,
               repo: context.payload.repository.name,
               title: "${{ format('🚀 Release {0}', github.sha) }}",
