@@ -2,10 +2,8 @@
 name: Publish
 
 on:
-  workflow_run:
-    workflows: ["Prepublish"]
+  push:
     branches: ["main"]
-    types: ["completed"]
 
 permissions:
   contents: write
@@ -16,10 +14,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  publish:
-    name: Publish
+  release:
+    name: Release
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false && github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false }}
     outputs:
       version: ${{ steps.get-version.outputs.version }}
     steps:
@@ -44,18 +42,22 @@ jobs:
           token: ${{secrets.CODECOV_TOKEN}}
 
       # Release
+      # - Bump version
       - run: npm version patch --no-git-tag-version
       - id: get-version
         run: echo "version=$(npm pkg get version | xargs echo)" >> $GITHUB_OUTPUT
+      # - Commit
       - run: git switch -c "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
       - run: git add package.json package-lock.json
       - run: |
           ${{ format('git commit -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
       - run: git push -f -u origin "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
+      # - Tag
       - run: ${{ format('git push --delete origin v{0} || exit 0', steps.get-version.outputs.version) }}
       - run: |
           ${{ format('git tag -a v{0} -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
       - run: git push --tags
+      # - PR
       - uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
@@ -67,13 +69,54 @@ jobs:
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: github.event.repository.default_branch
             });
+      - name: Approve (as @github-actions[bot])
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.pulls.createReview({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number,
+              event: "APPROVE",
+            })
+      - name: Merge
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.pulls.merge({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number
+            });
 
-      # Publish to NPM
+  publish-npm:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false }}
+    needs: release
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          registry-url: "https://registry.npmjs.org"
       - run: npm publish --access public --@smockle:registry=https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Publish to GPR
+  publish-gpr:
+    name: Publish to GPR
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false }}
+    needs: release
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
