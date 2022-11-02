@@ -14,7 +14,6 @@ jobs:
         with:
           node-version: "18"
           registry-url: "https://registry.npmjs.org"
-      - run: npm i -g npm@7 --registry=https://registry.npmjs.org && npm --version
       - run: npm ci
       - run: npm run build
       - run: npm test
