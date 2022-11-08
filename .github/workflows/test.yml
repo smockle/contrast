@@ -16,7 +16,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            octokit.rest.repos.createCommitStatus({
+            github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: "${{ github.sha }}",
@@ -58,7 +58,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            octokit.rest.repos.createCommitStatus({
+            github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: "${{ github.sha }}",
@@ -72,7 +72,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            octokit.rest.repos.createCommitStatus({
+            github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: "${{ github.sha }}",
@@ -86,7 +86,7 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            octokit.rest.repos.createCommitStatus({
+            github.rest.repos.createCommitStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
               sha: "${{ github.sha }}",
