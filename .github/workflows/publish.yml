@@ -6,6 +6,7 @@ on:
     branches: ["main"]
 
 permissions:
+  actions: write
   contents: write
   packages: write
   pull-requests: write
