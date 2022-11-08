@@ -71,16 +71,11 @@ jobs:
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: 'main'
             });
-      - name: Merge PR
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: "${{fromJson(steps.create-pr.outputs.result).data.number}}"
-            });
+      - name: Auto-merge PR
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: "${{fromJson(steps.create-pr.outputs.result).data.html_url}}"
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       # Publish to npm
       - name: Publish to npm
