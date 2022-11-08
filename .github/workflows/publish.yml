@@ -71,6 +71,13 @@ jobs:
               head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
               base: 'main'
             });
+      - name: Run required checks
+        run: |
+          gh workflow run "Test" --ref "$BRANCH"
+          gh workflow run "CodeQL" --ref "$BRANCH"
+        env:
+          BRANCH: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Auto-merge PR
         run: gh pr merge --auto --merge "$PR_URL"
         env:
