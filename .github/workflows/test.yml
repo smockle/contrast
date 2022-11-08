@@ -1,12 +1,33 @@
 name: Test
+
 on:
   workflow_dispatch:
   pull_request:
 
 jobs:
+  workflow_start:
+    name: Workflow start
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+    steps:
+      - name: Create pending status
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            octokit.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: "${{ github.sha }}",
+              context: "${{ github.workflow }}",
+              state: "pending",
+              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
+            });
   test:
     name: Test
     runs-on: ${{ matrix.os }}
+    needs: [workflow_start]
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest"]
@@ -23,3 +44,53 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{secrets.CODECOV_TOKEN}}
+  workflow_complete:
+    name: Workflow complete
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [test]
+    permissions:
+      statuses: write
+    steps:
+      - name: Create success status
+        if: ${{success()}}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            octokit.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: "${{ github.sha }}",
+              context: "${{ github.workflow }}",
+              state: "success",
+              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
+            });
+      - name: Create failure status
+        if: ${{failure()}}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            octokit.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: "${{ github.sha }}",
+              context: "${{ github.workflow }}",
+              state: "failure",
+              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
+            });
+      - name: Create error status
+        if: ${{ !success() && !failure() }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            octokit.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: "${{ github.sha }}",
+              context: "${{ github.workflow }}",
+              state: "error",
+              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
+            });
