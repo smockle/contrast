@@ -3,7 +3,7 @@ author: smockle
 description: Report workflow status
 
 inputs:
-  state:
+  status:
     description: The state of the status
     required: true
 
@@ -19,6 +19,6 @@ runs:
             repo: context.repo.repo,
             sha: "${{ github.sha }}",
             context: "${{ github.workflow }}",
-            state: "${{ inputs.state }}",
+            state: "${{ inputs.status }}",
             target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
           })
