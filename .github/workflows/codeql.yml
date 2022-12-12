@@ -28,18 +28,12 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - name: Create pending status
-        uses: actions/github-script@v6
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/report-workflow-status
         with:
-          script: |
-            github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: "${{ github.sha }}",
-              context: "${{ github.workflow }}",
-              state: 'pending',
-              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
-            })
+          status: pending
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   analyze:
     name: Analyze
@@ -102,42 +96,22 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - name: Create success status
-        if: ${{success()}}
-        uses: actions/github-script@v6
+      - uses: actions/checkout@v3
+      - if: ${{success()}}
+        uses: ./.github/actions/report-workflow-status
         with:
-          script: |
-            github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: "${{ github.sha }}",
-              context: "${{ github.workflow }}",
-              state: 'success',
-              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
-            })
-      - name: Create failure status
-        if: ${{failure()}}
-        uses: actions/github-script@v6
+          status: success
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{failure()}}
+        uses: ./.github/actions/report-workflow-status
         with:
-          script: |
-            github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: "${{ github.sha }}",
-              context: "${{ github.workflow }}",
-              state: 'failure',
-              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
-            })
-      - name: Create error status
-        if: ${{ !success() && !failure() }}
-        uses: actions/github-script@v6
+          status: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ !success() && !failure() }}
+        uses: ./.github/actions/report-workflow-status
         with:
-          script: |
-            github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: "${{ github.sha }}",
-              context: "${{ github.workflow }}",
-              state: 'error',
-              target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
-            })
+          status: error
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,8 +1,27 @@
-name: Test
+# report-workflow-status
 
+Report workflow status.
+
+## Usage
+
+### Inputs
+
+#### `status`
+
+**Required** The state of the status. Can be one of: `"error"`, `"failure"`, `"pending"`, or `"success"`.
+
+### Environment Variables
+
+#### `GITHUB_TOKEN`
+
+**Required** The GitHub Actions-provided [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret) with `statuses: write` [`permissions`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
+
+### Example workflow
+
+```YAML
+name: My Workflow
 on:
   workflow_dispatch:
-  pull_request:
 
 jobs:
   workflow_start:
@@ -18,32 +37,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  test:
-    name: Test
-    runs-on: ${{ matrix.os }}
+  main:
+    name: Main
+    runs-on: ubuntu-latest
     needs: [workflow_start]
-    strategy:
-      matrix:
-        os: ["ubuntu-latest", "windows-latest"]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "18"
-          registry-url: "https://registry.npmjs.org"
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
-      - if: matrix.os == 'ubuntu-latest'
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
+      - run: echo "Hello, world!"
 
   workflow_complete:
     name: Workflow complete
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    needs: [test]
+    needs: [main]
     permissions:
       statuses: write
     steps:
@@ -66,3 +71,4 @@ jobs:
           status: error
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
