@@ -1,0 +1,24 @@
+name: report-workflow-status
+author: smockle
+description: Report workflow status
+
+inputs:
+  state:
+    description: The state of the status
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Create status
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.createCommitStatus({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            sha: "${{ github.sha }}",
+            context: "${{ github.workflow }}",
+            state: "${{ inputs.state }}",
+            target_url: "${{ format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}"
+          })
