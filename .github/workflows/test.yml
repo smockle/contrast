@@ -48,8 +48,21 @@ jobs:
       statuses: write
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/report-workflow-status
+      - if: ${{success()}}
+        uses: ./.github/actions/report-workflow-status
         with:
-          status: ${{ success() && 'success' || failure() && 'failure' || 'error' }}
+          status: success
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{failure()}}
+        uses: ./.github/actions/report-workflow-status
+        with:
+          status: failure
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ !success() && !failure() }}
+        uses: ./.github/actions/report-workflow-status
+        with:
+          status: error
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
