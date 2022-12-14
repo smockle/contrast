@@ -14,7 +14,7 @@ Report workflow status.
 
 #### `GITHUB_TOKEN`
 
-**Required** The GitHub Actions-provided [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret) with `statuses: write` [`permissions`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token)
+**Optional** The GitHub Actions-provided [`GITHUB_TOKEN`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret) with `statuses: write` [`permissions`](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token). The token is read from context (`github.token`), so it’s optional to provide it via `env.GITHUB_TOKEN`.
 
 ### Example workflow
 
@@ -34,8 +34,6 @@ jobs:
       - uses: ./.github/actions/report-workflow-status
         with:
           status: pending
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   main:
     name: Main
@@ -57,18 +55,12 @@ jobs:
         uses: ./.github/actions/report-workflow-status
         with:
           status: success
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{failure()}}
         uses: ./.github/actions/report-workflow-status
         with:
           status: failure
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{ !success() && !failure() }}
         uses: ./.github/actions/report-workflow-status
         with:
           status: error
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
