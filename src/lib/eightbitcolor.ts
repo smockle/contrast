@@ -1,5 +1,5 @@
-import { EightBit } from "./eightbit";
-import { HexColor } from "./hexcolor";
+import { EightBit } from "./eightbit.js";
+import { HexColor } from "./hexcolor.js";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class EightBitColor {
