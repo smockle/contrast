@@ -1,4 +1,4 @@
-import { Hex } from "./hex";
+import { Hex } from "./hex.js";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class EightBit implements EightBit {

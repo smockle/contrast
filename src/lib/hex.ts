@@ -1,4 +1,4 @@
-import { EightBit } from "./eightbit";
+import { EightBit } from "./eightbit.js";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 /**
@@ -24,13 +24,7 @@ export class Hex {
 
   constructor(value?: string | null) {
     this.value = value
-      ? padStart(
-          String(value)
-            .replace("#", "")
-            .toUpperCase(),
-          2,
-          "0"
-        )
+      ? padStart(String(value).replace("#", "").toUpperCase(), 2, "0")
       : null;
   }
   /** Returns the current value, e.g. "FF". */

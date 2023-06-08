@@ -1,5 +1,5 @@
-import { EightBit, EightBitColor } from "../lib/index";
-import { THRESHOLD } from "./util";
+import { EightBit, EightBitColor } from "../lib/index.js";
+import { THRESHOLD } from "./util.js";
 import { inspect } from "util";
 
 describe("EightBitColor", () => {
@@ -19,7 +19,7 @@ describe("EightBitColor", () => {
     expect(new EightBitColor(0, 128, 255).valueOf()).toEqual({
       R: 0,
       G: 128,
-      B: 255
+      B: 255,
     });
   });
   test("inspect", () => {

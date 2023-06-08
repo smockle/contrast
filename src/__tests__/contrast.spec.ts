@@ -1,5 +1,5 @@
-import { Contrast } from "../lib/index";
-import { THRESHOLD } from "./util";
+import { Contrast } from "../lib/index.js";
+import { THRESHOLD } from "./util.js";
 import { inspect } from "util";
 
 describe("Contrast", () => {

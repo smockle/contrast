@@ -1,4 +1,4 @@
-import { HexColor } from "./hexcolor";
+import { HexColor } from "./hexcolor.js";
 const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class Contrast {

@@ -1,4 +1,4 @@
-import { HexColor } from "../lib/index";
+import { HexColor } from "../lib/index.js";
 import { inspect } from "util";
 
 describe("HexColor", () => {
@@ -38,14 +38,14 @@ describe("HexColor", () => {
     expect(new HexColor("#0080FF").toEightBitColor().valueOf()).toEqual({
       R: 0,
       G: 128,
-      B: 255
+      B: 255,
     });
   });
   test("toEightBitColor", () => {
     expect(new HexColor(null).toEightBitColor().valueOf()).toEqual({
       R: 0,
       G: 0,
-      B: 0
+      B: 0,
     });
   });
 });

@@ -1,5 +1,5 @@
-import { EightBit } from "../lib/index";
-import { THRESHOLD } from "./util";
+import { EightBit } from "../lib/index.js";
+import { THRESHOLD } from "./util.js";
 import { inspect } from "util";
 
 describe("EightBit", () => {

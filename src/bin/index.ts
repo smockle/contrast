@@ -1,5 +1,5 @@
-#!/usr/bin/env node --experimental-specifier-resolution=node --no-warnings
-import { Contrast } from "../lib/index";
+#!/usr/bin/env node
+import { Contrast } from "../lib/index.js";
 import { existsSync, readFileSync } from "fs";
 import { inspect } from "util";
 import url from "url";
