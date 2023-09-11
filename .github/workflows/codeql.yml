@@ -28,7 +28,7 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/report-workflow-status
         with:
           status: pending
@@ -52,7 +52,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -94,7 +94,7 @@ jobs:
     permissions:
       statuses: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - if: ${{success()}}
         uses: ./.github/actions/report-workflow-status
         with:
