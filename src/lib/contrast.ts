@@ -1,5 +1,4 @@
 import { HexColor } from "./hexcolor.js";
-const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 export class Contrast {
   /** The foreground color, e.g. "#FFFFFF". */
@@ -26,7 +25,7 @@ export class Contrast {
     return this.value;
   }
   /** Returns a formatted representation of the luminosity contrast ratio, e.g. "4.5:1". */
-  [inspect](): string {
+  [Symbol.for("nodejs.util.inspect.custom")](): string {
     return `${this.value}:1`;
   }
 }

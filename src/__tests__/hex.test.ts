@@ -1,5 +1,6 @@
+import { inspect } from "node:util";
+import { describe, test, expect } from "@jest/globals";
 import { Hex } from "../lib/index.js";
-import { inspect } from "util";
 
 describe("Hex", () => {
   test("constructor, with #", () => {

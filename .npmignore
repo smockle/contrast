@@ -1,0 +1,6 @@
+.github
+coverage
+dist/__tests__
+src
+tsconfig.json
+tsconfig.tsbuildinfo

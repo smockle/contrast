@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { Contrast } from "../lib/index.js";
-import { existsSync, readFileSync } from "fs";
-import { inspect } from "util";
-import url from "url";
+import { existsSync, readFileSync } from "node:fs";
+import { inspect } from "node:util";
+import url from "node:url";
 const { URL } = url;
 
 const foreground: string = process.argv.slice(2)[0];
