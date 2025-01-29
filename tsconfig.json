@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true
+    "composite": true,
+    "incremental": true
   },
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "ts-node": {
+    "esm": true
+  }
 }

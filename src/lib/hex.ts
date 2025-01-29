@@ -1,5 +1,4 @@
 import { EightBit } from "./eightbit.js";
-const inspect = Symbol.for("nodejs.util.inspect.custom");
 
 /**
  * Pads the provided string with another string (repeated, if needed) so that the resulting string reaches the given length. The padding is applied from the start (left) of the provided string.
@@ -32,7 +31,7 @@ export class Hex {
     return this.value;
   }
   /** Returns a formatted representation of the current value, e.g. "#FF". */
-  [inspect](): string {
+  [Symbol.for("nodejs.util.inspect.custom")](): string {
     return `#${this.value}`;
   }
   /** Returns an EightBit with the current value, e.g. EightBit(255). */

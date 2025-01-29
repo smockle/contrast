@@ -1,6 +1,6 @@
+import { inspect } from "node:util";
+import { describe, test, expect } from "@jest/globals";
 import { EightBit, EightBitColor } from "../lib/index.js";
-import { THRESHOLD } from "./util.js";
-import { inspect } from "util";
 
 describe("EightBitColor", () => {
   test("constructor, with Number", () => {
@@ -26,11 +26,9 @@ describe("EightBitColor", () => {
     expect(inspect(new EightBitColor(0, 128, 255))).toEqual("rgb(0, 128, 255)");
   });
   test("luminosity", () => {
-    expect(
-      Math.abs(
-        new EightBitColor(0, 128, 255).luminosity() - 0.22658342968146072
-      )
-    ).toBeLessThan(THRESHOLD);
+    expect(Math.abs(new EightBitColor(0, 128, 255).luminosity())).toBeCloseTo(
+      0.22658342968146072
+    );
   });
   test("toHexColor", () => {
     expect(inspect(new EightBitColor(0, 128, 255).toHexColor())).toEqual(

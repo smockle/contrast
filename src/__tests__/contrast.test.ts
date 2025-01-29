@@ -1,6 +1,6 @@
+import { inspect } from "node:util";
+import { describe, test, expect } from "@jest/globals";
 import { Contrast } from "../lib/index.js";
-import { THRESHOLD } from "./util.js";
-import { inspect } from "util";
 
 describe("Contrast", () => {
   test("constructor", () => {
@@ -9,14 +9,14 @@ describe("Contrast", () => {
     );
   });
   test("constructor, value", () => {
-    expect(
-      Math.abs(new Contrast("#0080FF", "#FFFFFF").value - 3.796322871580839)
-    ).toBeLessThan(THRESHOLD);
+    expect(Math.abs(new Contrast("#0080FF", "#FFFFFF").value)).toBeCloseTo(
+      3.796322871580839
+    );
   });
   test("valueOf", () => {
-    expect(
-      Math.abs(new Contrast("#0080FF", "#FFFFFF").valueOf() - 3.796322871580839)
-    ).toBeLessThan(THRESHOLD);
+    expect(Math.abs(new Contrast("#0080FF", "#FFFFFF").valueOf())).toBeCloseTo(
+      3.796322871580839
+    );
   });
   test("inspect", () => {
     expect(inspect(new Contrast("#0080FF", "#FFFFFF"))).toEqual(

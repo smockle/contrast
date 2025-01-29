@@ -1,106 +1,34 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json
 name: Publish
 
 on:
-  push:
-    branches: ["main"]
+  release:
+    types: [created]
 
 permissions:
-  actions: write
-  contents: write
+  contents: read
   id-token: write
-  packages: write
-  pull-requests: write
-
-concurrency:
-  group: ${{ github.workflow }}
-  cancel-in-progress: true
 
 jobs:
-  release:
-    name: Release
+  test:
+    name: Test
+    uses: smockle/contrast/.github/workflows/test.yml@main
+    secrets: inherit
+  publish:
+    needs: [test]
+    name: Publish
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.commits[0].message, '[skip ci]') == false }}
     steps:
-      # Build
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - run: git config --global user.email 'github-actions[bot]'
-      - run: git config --global user.name 'github-actions[bot]@users.noreply.github.com'
       - uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: npm i -g npm@latest
+          node-version: 22
+          registry-url: https://registry.npmjs.org/
+          cache: npm
       - run: npm ci
       - run: npm run build
-
-      # Test
-      - run: npm test
-      - uses: codecov/codecov-action@v5
-        with:
-          token: ${{secrets.CODECOV_TOKEN}}
-
-      # Release
-      # - Bump version
-      - run: npm version patch --no-git-tag-version
-      - id: get-version
-        run: echo "version=$(npm pkg get version | xargs echo)" >> $GITHUB_OUTPUT
-      # - Commit
-      - run: git switch -c "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
-      - run: git add package.json package-lock.json
-      - run: |
-          ${{ format('git commit -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
-      - run: git push -f -u origin "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
-      # - Tag
-      - run: ${{ format('git tag -d v{0} || exit 0', steps.get-version.outputs.version) }}
-      - run: ${{ format('git push --delete origin v{0} || exit 0', steps.get-version.outputs.version) }}
-      - run: |
-          ${{ format('git tag -a v{0} -m "chore: release version {0} [skip ci]"', steps.get-version.outputs.version) }}
-      - run: git push --tags
-      # - PR
-      - id: create-pr
-        name: Create PR
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            return github.rest.pulls.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: "${{ format('🚀 Release v{0}', steps.get-version.outputs.version) }}",
-              head: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}",
-              base: 'main'
-            });
-      - name: Run required checks
-        run: |
-          gh workflow run "Test" --ref "$BRANCH"
-          gh workflow run "CodeQL" --ref "$BRANCH"
+      - run: npm version ${TAG_NAME} --git-tag-version=false
         env:
-          BRANCH: "${{ format('{0}-{1}', github.workflow, steps.get-version.outputs.version) }}"
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Auto-merge PR
-        run: gh pr merge --auto --merge "$PR_URL"
+          TAG_NAME: ${{ github.event.release.tag_name }}
+      - run: npm whoami; npm --ignore-scripts publish --provenance --access public
         env:
-          PR_URL: "${{fromJson(steps.create-pr.outputs.result).data.html_url}}"
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      # Publish to npm
-      - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # Publish to GPR
-      - name: Reconfigure Node.js for GPR
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-          registry-url: "https://npm.pkg.github.com"
-      - run: npm i -g npm@latest
-      - name: Publish to GPR
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

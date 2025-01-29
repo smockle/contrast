@@ -1,5 +1,6 @@
+import { inspect } from "node:util";
+import { describe, test, expect } from "@jest/globals";
 import { HexColor } from "../lib/index.js";
-import { inspect } from "util";
 
 describe("HexColor", () => {
   test("constructor", () => {
