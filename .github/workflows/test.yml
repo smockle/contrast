@@ -6,9 +6,6 @@ on:
       CODECOV_TOKEN:
         required: true
   pull_request:
-  push:
-    branches:
-      - main
 
 permissions:
   contents: read
