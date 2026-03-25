@@ -1,5 +1,5 @@
 import { inspect } from "node:util";
-import { describe, test, expect } from "@jest/globals";
+import { describe, test, expect } from "vitest";
 import { Contrast } from "../lib/index.js";
 
 describe("Contrast", () => {
