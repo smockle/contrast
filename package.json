@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "NODE_OPTIONS='--no-warnings=ExperimentalWarning --experimental-vm-modules' npx jest",
+    "test": "vitest run --coverage",
     "start": "node --no-warnings=ExperimentalWarning --experimental-vm-modules dist/bin/index.js"
   },
   "repository": {
@@ -23,23 +23,9 @@
   },
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
-    "jest": "^30.2.0",
-    "ts-jest": "^29.1.1",
-    "typescript": "^5.2.2"
-  },
-  "jest": {
-    "preset": "ts-jest/presets/default-esm",
-    "collectCoverage": true,
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "testRegex": "\\.test\\.ts$",
-    "moduleNameMapper": {
-      "^(\\.{1,2}/.*)\\.js$": "$1",
-      "^@/(.*)\\.js$": "<rootDir>/src/$1"
-    }
+    "@types/node": "^25.5.0",
+    "@vitest/coverage-v8": "^4.0.16",
+    "typescript": "^5.2.2",
+    "vitest": "^4.0.16"
   }
 }
