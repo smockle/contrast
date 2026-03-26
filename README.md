@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@smockle/contrast.svg)](https://www.npmjs.com/package/@smockle/contrast)
 [![codecov](https://codecov.io/gh/smockle/contrast/branch/main/graph/badge.svg)](https://codecov.io/gh/smockle/contrast)
 
-Analyse luminosity contrast ratio
+Analyse luminosity contrast ratio.
 
 ## Installation
 
