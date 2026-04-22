@@ -1,1 +1,6 @@
 * @smockle
+
+# dependencies
+package.json
+package-lock.json
+.github/workflows/*.yml
