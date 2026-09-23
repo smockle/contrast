@@ -24,7 +24,7 @@
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
     "@types/node": "^26.0.0",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^5.0.1",
     "typescript": "^7.0.2",
     "vitest": "^4.0.16"
   }
