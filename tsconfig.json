@@ -4,15 +4,10 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "types": ["node"],
-    "esModuleInterop": true,
     "strict": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "composite": true,
-    "incremental": true
+    "noEmit": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true
   },
-  "include": ["src/**/*.ts"],
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

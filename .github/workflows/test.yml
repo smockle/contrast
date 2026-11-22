@@ -21,8 +21,9 @@ jobs:
           node-version: 24
       - run: npm install -g npm@^11.0.0
       - run: npm ci
-      - run: npm run build
+      - run: npm run typecheck
       - run: npm test
+      - run: npm run build
       - if: github.actor != 'dependabot[bot]'
         name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
