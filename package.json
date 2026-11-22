@@ -3,14 +3,30 @@
   "version": "0.0.0-development",
   "description": "Analyse luminosity contrast ratio",
   "type": "module",
-  "main": "dist/lib/index.js",
+  "main": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.js"
+    },
+    "./dist/*.js": "./dist/*.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
   "bin": {
     "contrast": "dist/bin/index.js"
   },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "build": "tsc",
-    "test": "vitest run --coverage",
-    "start": "node --no-warnings=ExperimentalWarning --experimental-vm-modules dist/bin/index.js"
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc",
+    "test": "node --eval \"require('node:fs').mkdirSync('coverage', { recursive: true })\" && node --import tsx --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info 'test/**/*.test.ts'",
+    "start": "node dist/bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +39,8 @@
   },
   "homepage": "https://github.com/smockle/contrast#readme",
   "devDependencies": {
-    "@types/node": "^26.0.0",
-    "@vitest/coverage-v8": "^5.1.0",
-    "typescript": "^7.0.2",
-    "vitest": "^5.1.0"
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   }
 }

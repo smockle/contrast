@@ -5,6 +5,8 @@
 
 Analyse luminosity contrast ratio
 
+Requires Node.js 24 or newer.
+
 ## Installation
 
 Run `npm install @smockle/contrast` to add `contrast` to your project.
@@ -62,7 +64,7 @@ new Contrast("black", "white");
 
 ## Testing
 
-`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `npm install` in the project folder to install dependencies. Run `npm test` to execute the tests.
+`contrast` includes several unit tests. After cloning the `contrast` repo locally, run `npm ci` in the project folder to install dependencies. Run `npm run typecheck`, `npm test`, and `npm run build` to check types, execute tests, and emit the JavaScript and declaration files published to npm.
 
 ## References
 

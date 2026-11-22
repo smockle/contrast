@@ -2,14 +2,13 @@
 import { Contrast } from "../lib/index.js";
 import { existsSync, readFileSync } from "node:fs";
 import { inspect } from "node:util";
-import url from "node:url";
-const { URL } = url;
+import { URL } from "node:url";
 
 const foreground: string = process.argv.slice(2)[0];
 const background: string = process.argv.slice(2)[1];
 
-function getVersion(): string | void {
-  const path: url.URL = new URL("../../package.json", import.meta.url);
+function getVersion(): string | undefined {
+  const path: URL = new URL("../../package.json", import.meta.url);
   if (!existsSync(path)) {
     return;
   }
